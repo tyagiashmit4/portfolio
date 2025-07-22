@@ -6,6 +6,8 @@ import "react-18-image-lightbox/style.css";
 import amarujala from "../../../public/assets/images/projects/amarujala.jpeg";
 import myjyotish from "../../../public/assets/images/projects/myjyotish.jpeg";
 import thebonus from "../../../public/assets/images/projects/thebonus.jpeg";
+import lens from "../../../public/assets/images/Lens.png";
+import netflix from "../../../public/assets/images/netflix.png";
 
 
 
@@ -21,7 +23,7 @@ const portfolio_data:DataType[] = [
   {
     id: 1,
     col: "6",
-    image: amarujala,
+    image: amarujala, 
     title: "Amarujala News App",
     category: "app",
   },
@@ -42,15 +44,15 @@ const portfolio_data:DataType[] = [
   {
     id: 4,
     col: "4",
-    image: amarujala,
-    title: "Green Plant on a Desk",
+    image: lens,
+    title: "LensCorp Replica",
     category: "web",
   },
   {
     id: 5,
     col: "4",
-    image: amarujala,
-    title: "Orange Rose Flower",
+    image: netflix,
+    title: "Netflix Clone",
     category: "web",
   },
 ];
