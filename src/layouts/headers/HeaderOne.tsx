@@ -21,7 +21,7 @@ export default function HeaderOne() {
                 <div className="col-xl-2 col-lg-2 col-md-6 col-6 col-sm-3">
                   <div className="logo-area">
                     <div className="logo">
-                      <Link to="/"><img src="assets/images/logo.png" alt="" /></Link>
+                      <Link to="/"><img src="assets/images/portfolio.png" alt="" style={{ width: "150px", height: "auto" }} /></Link>
                     </div>
                   </div>
                 </div>
