@@ -18,20 +18,6 @@ export default function ResumeArea() {
                 </div>
 
                 <div className="resume-box">
-                  <span className="resume-date">OCT 2022 - DEC 2022</span>
-                  <h2>Web Developer (Intern)</h2>
-                  <span>@ GBMR Electronics Pvt. Ltd.</span>
-                  <p>
-                    Built and optimized the company’s official website using
-                    React, implementing performance improvements such as faster
-                    load times and responsive layouts.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-6 col-md-6">
-              <div className="resume-wrapper wow fadeInUp delay-0-4s">
-                <div className="resume-box">
                   <span className="resume-date">Jun 2023 - Mar 2024</span>
                   <h2>Software Developer</h2>
                   <span>@ InfraBlok India Pvt. Ltd</span>
@@ -40,6 +26,22 @@ export default function ResumeArea() {
                     React,JavaScript, and Typescript, focusing on creating
                     scalable and maintainable solutions with optimized
                     performance.
+                  </p>
+                </div>
+
+               
+              </div>
+            </div>
+            <div className="col-xl-6 col-md-6">
+              <div className="resume-wrapper wow fadeInUp delay-0-4s">
+              <div className="resume-box">
+                  <span className="resume-date">OCT 2022 - DEC 2022</span>
+                  <h2>Web Developer (Intern)</h2>
+                  <span>@ GBMR Electronics Pvt. Ltd.</span>
+                  <p>
+                    Built and optimized the company’s official website using
+                    React, implementing performance improvements such as faster
+                    load times and responsive layouts.
                   </p>
                 </div>
                 <div className="resume-box">
