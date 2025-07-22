@@ -61,7 +61,7 @@ export default function HeroArea() {
                   develop user-friendly digital experiences.
                 </p>
                 <a className="theme-btn" target="_blank" href="/resume.pdf">
-                  Get In touch
+                  My Resume <i className="ri-arrow-right-line"></i>
                 </a>
               </div>
             </div>
