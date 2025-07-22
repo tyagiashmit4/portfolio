@@ -5,7 +5,7 @@ const counter_data = [
   {
     id: 1,
     title: 'Years Of Experience',
-    count: 1,
+    count: 1.5,
     cls: "plus",
   },
   {
@@ -34,7 +34,7 @@ export default function AboutArea() {
             </div>
             <div className="col-lg-9 col-sm-9">
               <div className="about-content-part wow fadeInUp delay-0-2s">
-                <p>I am Ashmit Tyagi, a Software Developer with over 1+ years of experience in developing intuitive and engaging digital experiences. My journey began with a background in Web Development , where I discovered my passion for understanding user behavior and translating it into seamless interactions.</p>
+                <p>I am Ashmit Tyagi, a Software Developer with over 1.5+ years of experience in developing intuitive and engaging digital experiences. My journey began with a background in Web Development , where I discovered my passion for understanding user behavior and translating it into seamless interactions.</p>
               </div>
               <div className="hero-counter-area d-flex justify-content-between wow fadeInUp delay-0-4s">
                 {counter_data.map((item, i) => (

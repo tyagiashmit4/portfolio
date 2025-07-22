@@ -20,17 +20,18 @@ export default function HeroArea() {
                 <div className="clienti-reviews">
                   <ul className="clienti-profile">
                     <li>
-                      <img className="img-fluid" src="assets/images/avatar/01.jpg" alt="client" />
+                      <img className="img-fluid" src="assets/images/ajay.jpeg" alt="Ajay Kumar" />
                     </li>
                     <li>
-                      <img className="img-fluid" src="assets/images/avatar/02.jpg" alt="client" />
+                      <img className="img-fluid" src="assets/images/shantanu.jpg" alt="Shantanu Gaurav" />
                     </li>
                     <li>
-                      <img className="img-fluid" src="assets/images/avatar/03.jpg" alt="client" />
+                      <img className="img-fluid" src="assets/images/gurdeep.jpg" alt="Gurdeep Singh" />
                     </li>
+                 
                   </ul>
-                  <div className="reviews">100+ reviews <span>(4.96 of 5)</span>
-                    <p>Five-star reviews from my esteemed clients.</p>
+                  <div className="reviews">5+ reviews <span>(4.96 of 5)</span>
+                    <p>Trusted by Technical Experts, with 4.96 out of 5 reviews</p>
                   </div>
                 </div>
               </div>
@@ -45,7 +46,7 @@ export default function HeroArea() {
             <div className="col-lg-3 pt-30">
               <div className="hero-content wow fadeInUp delay-0-4s">
                 <p>Hi, I’m Ashmit, a passionate Software Developer dedicated to develop user-friendly digital experiences.</p>
-                <a className="theme-btn" href="">Get In touch</a>
+                <a className="theme-btn" target="_blank" href="/resume.pdf">Get In touch</a>
               </div>
 
             </div>
