@@ -5,7 +5,7 @@ import AboutArea from './AboutArea'
 import ServiceArea from './ServiceArea' 
 import PortfolioArea from './PortfolioArea'
 import TestimonoalArea from './TestimonoalArea'
-import BlogArea from './BlogArea'
+// import BlogArea from './BlogArea'
 import ContactArea from './ContactArea' 
 import HeaderOne from '../../layouts/headers/HeaderOne'
 import FooterOne from '../../layouts/footers/FooterOne'
@@ -26,7 +26,7 @@ export default function Home() {
             <ServiceArea />
             <PortfolioArea />
             <TestimonoalArea />
-            <BlogArea />
+            {/* <BlogArea /> */}
             <ContactArea />
           </main>
           <FooterOne />

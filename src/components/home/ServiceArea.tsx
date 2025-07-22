@@ -1,5 +1,3 @@
- 
-
 export default function ServiceArea() {
   return (
     <>
@@ -13,49 +11,106 @@ export default function ServiceArea() {
             </div>
           </div>
           <div className="row">
-
             <div className="col-lg-8 col-md-7">
               <div className="service-item wow fadeInUp delay-0-2s">
-                <i className="ri-arrow-right-up-line"></i>
+                {/* <i className="ri-arrow-right-up-line"></i> */}
                 <h5>01</h5>
-                <h4>Brand Identity Design</h4>
-                <p>Blend of strategic thinking and creative flair to craft a digital identity that resonates and captivates. kits you need to create a true website within minutes.</p>
+                <h4>End-to-End Mobile App Development (React Native)</h4>
+                <p>
+                  {" "}
+                  Build high-performance cross-platform apps using React Native
+                  with seamless navigation, theming, and state management.
+                </p>
               </div>
             </div>
-
 
             <div className="col-lg-4 col-md-5">
               <div className="service-item wow fadeInUp delay-0-4s">
-                <i className="ri-arrow-right-up-line"></i>
+                {/* <i className="ri-arrow-right-up-line"></i> */}
                 <h5>02</h5>
-                <h4>Visual Design</h4>
-                <p>Blend of artistic intuition with strategic insight to craft a visual identity.</p>
+                <h4>Reusable Component Library / Design System</h4>
+                <p>
+                  {" "}
+                  Create modular, theme-aware UI components to ensure design
+                  consistency across projects using React or React Native
+                </p>
               </div>
             </div>
-
 
             <div className="col-lg-4 col-md-5">
               <div className="service-item wow fadeInUp delay-0-6s">
-                <i className="ri-arrow-right-up-line"></i>
+                {/* <i className="ri-arrow-right-up-line"></i> */}
                 <h5>03</h5>
-                <h4>UX Research</h4>
-                <p>Blend of functionality with aesthetics to create delightful experience.</p>
+                <h4>Custom Hook Development</h4>
+                <p>
+                  Develop reusable custom hooks to abstract business logic and
+                  simplify component code.
+                </p>
               </div>
             </div>
-
 
             <div className="col-lg-8 col-md-7">
               <div className="service-item wow fadeInUp delay-0-8s">
-                <i className="ri-arrow-right-up-line"></i>
+                {/* <i className="ri-arrow-right-up-line"></i> */}
                 <h5>04</h5>
-                <h4>Art Direction</h4>
-                <p>Blend of strategic thinking and artistic finesse to craft a visual identity that goes beyond aesthetics.</p>
+                <h4> Complex State Management with Redux Toolkit </h4>
+                <p>
+                  Implement scalable, maintainable app-wide state with Redux
+                  Toolkit, or Context API.
+                </p>
               </div>
             </div>
 
+            <div className="col-lg-8 col-md-7">
+              <div className="service-item wow fadeInUp delay-0-8s">
+                {/* <i className="ri-arrow-right-up-line"></i> */}
+                <h5>05</h5>
+                <h4> Performance Optimization (React/RN)</h4>
+                <p>
+                  Optimize render cycles and app speed using memoization, lazy
+                  loading, and Flipper/Hermes tools.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-5">
+              <div className="service-item wow fadeInUp delay-0-6s">
+                {/* <i className="ri-arrow-right-up-line"></i> */}
+                <h5>06</h5>
+                <h4>Web App Development with React.js</h4>
+                <p>
+                  Build responsive and interactive SPAs using React.js, React
+                  Router, and Tailwind or Material UI.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-5">
+              <div className="service-item wow fadeInUp delay-0-6s">
+                {/* <i className="ri-arrow-right-up-line"></i> */}
+                <h5>07</h5>
+                <h4>CI/CD & OTA Deployments</h4>
+                <p>
+                  Automate builds and deployments using GitHub Actions, Vercel,
+                  or CodePush for fast and safe releases.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-lg-8 col-md-7">
+              <div className="service-item wow fadeInUp delay-0-8s">
+                {/* <i className="ri-arrow-right-up-line"></i> */}
+                <h5>08</h5>
+                <h4>Theming & Localization Support</h4>
+                <p>
+                  Enable dark/light mode, RTL layout, and multilingual
+                  interfaces using i18next and dynamic theming.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }

@@ -1,5 +1,3 @@
- 
-
 export default function SkillArea() {
   return (
     <>
@@ -19,50 +17,110 @@ export default function SkillArea() {
                   <div className="row">
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-2s">
-                        <img src="assets/images/skills/skill1.png" alt="Skill" />
-                        <h5>Figma</h5>
+                        <img
+                          src="assets/images/skills/skill1.png"
+                          alt="Skill"
+                        />
+                        <h5>React Native</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-3s">
-                        <img src="assets/images/skills/skill2.png" alt="Skill" />
-                        <h5>Tailwand</h5>
+                        <img
+                          src="assets/images/skills/skill2.png"
+                          alt="Skill"
+                        />
+                        <h5>React.js</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-4s">
-                        <img src="assets/images/skills/skill3.png" alt="Skill" />
-                        <h5>Photoshop</h5>
+                        <img
+                          src="assets/images/skills/skill3.png"
+                          alt="Skill"
+                        />
+                        <h5>JavaScript</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-5s">
-                        <img src="assets/images/skills/skill4.png" alt="Skill" />
-                        <h5>WordPress</h5>
+                        <img
+                          src="assets/images/skills/skill4.png"
+                          alt="Skill"
+                        />
+                        <h5>TypeScript</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-2s">
-                        <img src="assets/images/skills/skill5.png" alt="Skill" />
-                        <h5>Angular</h5>
+                        <img
+                          src="assets/images/skills/skill5.png"
+                          alt="Skill"
+                        />
+                        <h5>Java</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-3s">
-                        <img src="assets/images/skills/skill6.png" alt="Skill" />
-                        <h5>Webflow</h5>
+                        <img
+                          src="assets/images/skills/skill6.png"
+                          alt="Skill"
+                        />
+                        <h5>MySql</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-4s">
-                        <img src="assets/images/skills/skill7.png" alt="Skill" />
-                        <h5>Python</h5>
+                        <img
+                          src="assets/images/skills/skill7.png"
+                          alt="Skill"
+                        />
+                        <h5>HTML</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-5s">
-                        <img src="assets/images/skills/skill8.png" alt="Skill" />
-                        <h5>Sketch</h5>
+                        <img
+                          src="assets/images/skills/skill8.png"
+                          alt="Skill"
+                        />
+                        <h5>CSS</h5>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                      <div className="skill-item wow fadeInUp delay-0-5s">
+                        <img
+                          src="assets/images/skills/skill8.png"
+                          alt="Skill"
+                        />
+                        <h5>Data Structures</h5>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                      <div className="skill-item wow fadeInUp delay-0-5s">
+                        <img
+                          src="assets/images/skills/skill8.png"
+                          alt="Skill"
+                        />
+                        <h5>Object-Oriented Programming (OOPs)</h5>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                      <div className="skill-item wow fadeInUp delay-0-5s">
+                        <img
+                          src="assets/images/skills/skill8.png"
+                          alt="Skill"
+                        />
+                        <h5>Git</h5>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                      <div className="skill-item wow fadeInUp delay-0-5s">
+                        <img
+                          src="assets/images/skills/skill8.png"
+                          alt="Skill"
+                        />
+                        <h5>Github</h5>
                       </div>
                     </div>
                   </div>
@@ -73,5 +131,5 @@ export default function SkillArea() {
         </div>
       </section>
     </>
-  )
+  );
 }
