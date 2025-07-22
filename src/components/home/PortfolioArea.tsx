@@ -3,11 +3,11 @@ import { useState } from "react";
 import ImagePopup from "../../modals/ImagePopup";
 import "react-18-image-lightbox/style.css";
 
-import portfolio_img_1 from "../../../public/assets/images/projects/work1.jpg";
-import portfolio_img_2 from "../../../public/assets/images/projects/work2.jpg";
-import portfolio_img_3 from "../../../public/assets/images/projects/work3.jpg";
-import portfolio_img_4 from "../../../public/assets/images/projects/work4.jpg";
-import portfolio_img_5 from "../../../public/assets/images/projects/work5.jpg"; 
+import amarujala from "../../../public/assets/images/projects/amarujala.jpeg";
+import myjyotish from "../../../public/assets/images/projects/myjyotish.jpeg";
+import thebonus from "../../../public/assets/images/projects/thebonus.jpeg";
+
+
 
 interface DataType {
   id: number;
@@ -21,37 +21,37 @@ const portfolio_data:DataType[] = [
   {
     id: 1,
     col: "6",
-    image: portfolio_img_1,
-    title: "Glasses of Cocktail",
-    category: "Branding",
+    image: amarujala,
+    title: "Amarujala News App",
+    category: "app",
   },
   {
     id: 2,
     col: "6",
-    image: portfolio_img_2,
-    title: "A Branch with Flowers",
-    category: "Mockup",
+    image: myjyotish,
+    title: "Myjyotish Astrologer App",
+    category: "app",
   },
   {
     id: 3,
     col: "4",
-    image: portfolio_img_3,
-    title: "Orange Rose Flower",
-    category: "Video",
+    image: thebonus,
+    title: "TheBonus app",
+    category: "app",
   },
   {
     id: 4,
     col: "4",
-    image: portfolio_img_4,
+    image: amarujala,
     title: "Green Plant on a Desk",
-    category: "Branding",
+    category: "web",
   },
   {
     id: 5,
     col: "4",
-    image: portfolio_img_5,
+    image: amarujala,
     title: "Orange Rose Flower",
-    category: "Mockup",
+    category: "web",
   },
 ];
 
