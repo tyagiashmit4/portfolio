@@ -5,7 +5,7 @@ const counter_data = [
   {
     id: 1,
     title: 'Years Of Experience',
-    count: 1.5,
+    count: 1,
     cls: "plus",
   },
   {
@@ -14,12 +14,12 @@ const counter_data = [
     count: 10,
     cls: "plus",
   },
-  // {
-  //   id: 3,
-  //   title: 'Client Satisfactions',
-  //   count: 90,
-  //   cls: "percent",
-  // },
+  {
+    id: 3,
+    title: 'Certification',
+    count: 8,
+    cls: "plus",
+  },
 ]
 
 export default function AboutArea() {
