@@ -15,7 +15,7 @@ async function generateSitemap() {
     { url: '/contact', changefreq: 'yearly', priority: 0.5 },
   ];
 
-  const sitemapPath = resolve(__dirname, 'public', 'sitemap.xml');
+  const sitemapPath = resolve(__dirname, 'public', 'ashmit.xml');
 
   const stream = new SitemapStream({
     hostname,
@@ -34,7 +34,7 @@ async function generateSitemap() {
   stream.end();
 
   await streamToPromise(stream);
-  console.log('✅ Sitemap generated with namespaces at public/sitemap.xml');
+  console.log('✅ Sitemap generated with namespaces at public/ashmit.xml');
 }
 
 generateSitemap().catch(err => {
