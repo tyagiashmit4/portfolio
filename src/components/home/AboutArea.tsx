@@ -11,7 +11,7 @@ const counter_data = [
   {
     id: 2,
     title: 'Completed Projects',
-    count: 10,
+    count: 20,
     cls: "plus",
   },
   {
