@@ -8,7 +8,7 @@ import Projects from "./components/projects";
 // import SingleProject from "./components/single-project";
 // import Blog from "./components/blog";
 import Contact from "./components/contact";
-import BlogDetails from "./components/blog-details";
+// import BlogDetails from "./components/blog-details";
  
 
 
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   { path: "/projects", element: <Projects /> }, 
   // { path: "/single-project", element: <SingleProject /> }, 
   // { path: "/blog", element: <Blog /> }, 
-  { path: "/blog-details", element: <BlogDetails /> }, 
+  // { path: "/blog-details", element: <BlogDetails /> }, 
   { path: "/contact", element: <Contact /> }, 
  
 ]);
