@@ -1,10 +1,8 @@
-// generate-sitemap.js
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { createWriteStream } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
-// ✅ Manual __dirname workaround for ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -18,15 +16,25 @@ async function generateSitemap() {
   ];
 
   const sitemapPath = resolve(__dirname, 'public', 'sitemap.xml');
-  const stream = new SitemapStream({ hostname });
-  const writeStream = createWriteStream(sitemapPath);
 
+  const stream = new SitemapStream({
+    hostname,
+    xmlns: {
+      news: true,
+      xhtml: true,
+      image: true,
+      video: true
+    }
+  });
+
+  const writeStream = createWriteStream(sitemapPath);
   stream.pipe(writeStream);
+
   links.forEach(link => stream.write(link));
   stream.end();
 
   await streamToPromise(stream);
-  console.log('✅ Sitemap generated at public/sitemap.xml');
+  console.log('✅ Sitemap generated with namespaces at public/sitemap.xml');
 }
 
 generateSitemap().catch(err => {
