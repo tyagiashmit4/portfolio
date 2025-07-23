@@ -5,10 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>Ashmit Tyagi Portfolio</title>
+
+    <!-- Person Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ashmit Tyagi",
+        "url": "https://ashmittyagi.vercel.app/",
+        "image": "https://ashmittyagi.vercel.app/assets/images/ashmit.jpg",
+        "sameAs": [
+          "https://github.com/tyagiashmit4",
+          "https://www.linkedin.com/in/ashmittyagi/"
+        ],
+        "jobTitle": "Software Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Amar Ujala"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "GL Bajaj Institute of Technology and Management"
+        },
+        "knowsAbout": [
+          "React",
+          "React Native",
+          "Node.js",
+          "JavaScript",
+          "Redux"
+        ],
+        "email": "mailto:tyagiashmit4@gmail.com",
+        "description": "Passionate software developer experienced in building scalable React and React Native applications."
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    
   </body>
 </html>
