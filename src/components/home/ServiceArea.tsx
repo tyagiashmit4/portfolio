@@ -15,10 +15,10 @@ export default function ServiceArea() {
               <div className="service-item wow fadeInUp delay-0-2s">
                 {/* <i className="ri-arrow-right-up-line"></i> */}
                 <h5>01</h5>
-                <h4>End-to-End Mobile App Development (React Native)</h4>
+                <h4>End-to-End Web & Mobile App Development (React Native/React.js)</h4>
                 <p>
                   {" "}
-                  Build high-performance cross-platform apps using React Native
+                  Build high-performance cross-platform apps and websites using React Native/React.js
                   with seamless navigation, theming, and state management.
                 </p>
               </div>
@@ -85,17 +85,17 @@ export default function ServiceArea() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-5">
-              <div className="service-item wow fadeInUp delay-0-6s">
+            {/* <div className="col-lg-4 col-md-5">
+              <div className="service-item wow fadeInUp delay-0-6s"> */}
                 {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>07</h5>
+                {/* <h5>07</h5>
                 <h4>CI/CD & OTA Deployments</h4>
                 <p>
                   Automate builds and deployments using GitHub Actions, Vercel,
                   or CodePush for fast and safe releases.
                 </p>
               </div>
-            </div>
+            </div> */}
 
             <div className="col-lg-8 col-md-7">
               <div className="service-item wow fadeInUp delay-0-8s">
