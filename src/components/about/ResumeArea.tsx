@@ -16,7 +16,19 @@ export default function ResumeArea() {
                     applications using React Native.
                   </p>
                 </div>
-
+                <div className="resume-box">
+                  <span className="resume-date">Apr 2024 - Mar 2025</span>
+                  <h2>Software Developer</h2>
+                  <span>@ Freelance</span>
+                  <p>
+                    I help businesses design, develop, and maintain custom web
+                    and app solutions tailored to their goals. I work
+                    closely with clients to turn ideas and requirements into
+                    reliable, scalable applications. My focus is on clean,
+                    efficient code and continuous optimization to ensure
+                    long-term performance and success.
+                  </p>
+                </div>
                 <div className="resume-box">
                   <span className="resume-date">Jun 2023 - Mar 2024</span>
                   <h2>Software Developer</h2>
@@ -28,13 +40,11 @@ export default function ResumeArea() {
                     performance.
                   </p>
                 </div>
-
-               
               </div>
             </div>
             <div className="col-xl-6 col-md-6">
               <div className="resume-wrapper wow fadeInUp delay-0-4s">
-              <div className="resume-box">
+                <div className="resume-box">
                   <span className="resume-date">OCT 2022 - DEC 2022</span>
                   <h2>Web Developer (Intern)</h2>
                   <span>@ GBMR Electronics Pvt. Ltd.</span>
