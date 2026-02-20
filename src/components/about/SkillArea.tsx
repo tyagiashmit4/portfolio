@@ -21,7 +21,7 @@ export default function SkillArea() {
                           src="https://cdn-icons-png.flaticon.com/512/3393/3393920.png"
                           alt="Skill"
                           style={{ height: 55, width: 55 }}
-                        />
+                        /> 
                         <h5>React Native</h5>
                         </div>
                     </div>
@@ -60,11 +60,31 @@ export default function SkillArea() {
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                       <div className="skill-item wow fadeInUp delay-0-2s">
                         <img
+                          src="https://cdn-icons-png.flaticon.com/128/919/919825.png"
+                         alt="Skill"
+                          style={{ height: 55, width: 55 }}
+                        />
+                        <h5>Node.js</h5>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                      <div className="skill-item wow fadeInUp delay-0-2s">
+                        <img
                           src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png"
                          alt="Skill"
                           style={{ height: 55, width: 55 }}
                         />
                         <h5>Java</h5>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
+                      <div className="skill-item wow fadeInUp delay-0-3s">
+                        <img
+                          src="https://img.icons8.com/?size=96&id=90519&format=png"
+                         alt="Skill"
+                          style={{ height: 55, width: 55 }}
+                        />
+                        <h5>Spring Boot</h5>
                       </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
