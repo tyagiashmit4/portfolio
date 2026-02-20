@@ -7,7 +7,7 @@ import myjyotish from "../../../public/assets/images/projects/myjyotish.jpeg";
 import thebonus from "../../../public/assets/images/projects/thebonus.jpeg";
 import lens from "../../../public/assets/images/Lens.png";
 import netflix from "../../../public/assets/images/netflix.png";
-import dashboard from "../../../public/assets/images/Dashboard.png";
+import dashboard from "../../../public/assets/images/Dashbaord.png";
 import editor from "../../../public/assets/images/editor.png";
 
 interface DataType {
