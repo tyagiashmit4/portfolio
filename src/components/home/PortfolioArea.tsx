@@ -71,7 +71,6 @@ const portfolio_data: DataType[] = [
 ];
 
 export default function PortfolioArea() {
-  // photoIndex
   const [photoIndex, setPhotoIndex] = useState(null);
   // image open state
   const [isOpen, setIsOpen] = useState(false);
