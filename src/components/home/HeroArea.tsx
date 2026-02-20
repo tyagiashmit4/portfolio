@@ -60,7 +60,7 @@ export default function HeroArea() {
                   Hi, I’m Ashmit, a passionate Software Developer dedicated to
                   develop user-friendly digital experiences.
                 </p>
-                <a className="theme-btn" target="_blank" href="/resume.pdf">
+                <a className="theme-btn" target="_blank" href="/Ashmit_Tyagi_Resume.pdf">
                   My Resume <i className="ri-arrow-right-line"></i>
                 </a>
               </div>
