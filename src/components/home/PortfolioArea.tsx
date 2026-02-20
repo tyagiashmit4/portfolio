@@ -1,4 +1,3 @@
- 
 import { useState } from "react";
 import ImagePopup from "../../modals/ImagePopup";
 import "react-18-image-lightbox/style.css";
@@ -8,8 +7,8 @@ import myjyotish from "../../../public/assets/images/projects/myjyotish.jpeg";
 import thebonus from "../../../public/assets/images/projects/thebonus.jpeg";
 import lens from "../../../public/assets/images/Lens.png";
 import netflix from "../../../public/assets/images/netflix.png";
-
-
+import dashboard from "../../../public/assets/images/Dashboard.png";
+import editor from "../../../public/assets/images/editor.png";
 
 interface DataType {
   id: number;
@@ -19,11 +18,11 @@ interface DataType {
   category: string;
 }
 
-const portfolio_data:DataType[] = [
+const portfolio_data: DataType[] = [
   {
     id: 1,
     col: "6",
-    image: amarujala, 
+    image: amarujala,
     title: "Amarujala News App",
     category: "app",
   },
@@ -37,28 +36,41 @@ const portfolio_data:DataType[] = [
   {
     id: 3,
     col: "4",
-    image: thebonus,
-    title: "TheBonus app",
-    category: "app",
-  },
-  {
-    id: 4,
-    col: "4",
     image: lens,
     title: "LensCorp Replica",
     category: "web",
   },
   {
-    id: 5,
+    id: 4,
     col: "4",
     image: netflix,
     title: "Netflix Clone",
     category: "web",
   },
+  {
+    id: 5,
+    col: "4",
+    image: dashboard,
+    title: "React Dashboard & User Management System",
+    category: "web",
+  },
+  {
+    id: 6,
+    col: "4",
+    image: editor,
+    title: "Code Editor",
+    category: "web",
+  },
+  {
+    id: 7,
+    col: "6",
+    image: thebonus,
+    title: "TheBonus app",
+    category: "app",
+  },
 ];
 
 export default function PortfolioArea() {
-
   // photoIndex
   const [photoIndex, setPhotoIndex] = useState(null);
   // image open state
@@ -71,10 +83,8 @@ export default function PortfolioArea() {
   //  images
   const image = portfolio_data.slice(0, 5).map((item) => item.image);
 
-
   return (
     <>
-
       <div className="projects-area" id="portfolio">
         <div className="custom-icon">
           <img src="assets/images/custom/work-scribble.svg" alt="custom" />
@@ -82,12 +92,22 @@ export default function PortfolioArea() {
         <div className="container-fluid">
           <div className="row g-4 portfolio-grid">
             {portfolio_data.map((item, i) => (
-              <div key={i} className={`col-md-6 col-xl-${item.col} portfolio-item category-1`}>
+              <div
+                key={i}
+                className={`col-md-6 col-xl-${item.col} portfolio-item category-1`}
+              >
                 <a
                   style={{ cursor: "pointer" }}
-                  onClick={() => handleImagePopup(i)} className="work-popup">
+                  onClick={() => handleImagePopup(i)}
+                  className="work-popup"
+                >
                   <div className="portfolio-box">
-                    <img src={item.image} alt="" style={{ height: "auto"}} data-rjs="2" />
+                    <img
+                      src={item.image}
+                      alt=""
+                      style={{ height: "auto" }}
+                      data-rjs="2"
+                    />
                     <span className="portfolio-category">{item.category}</span>
                     <div className="portfolio-caption">
                       <h1>{item.title}</h1>
@@ -95,7 +115,7 @@ export default function PortfolioArea() {
                   </div>
                 </a>
               </div>
-            ))} 
+            ))}
           </div>
         </div>
       </div>
@@ -111,5 +131,5 @@ export default function PortfolioArea() {
       )}
       {/* image light box end */}
     </>
-  )
+  );
 }
