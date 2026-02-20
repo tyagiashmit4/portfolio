@@ -33,20 +33,7 @@ export default function AboutArea() {
             <div className="col-lg-9 col-sm-9">
               <div className="about-content-part wow fadeInUp delay-0-2s">
                 <p>
-                  I’m Ashmit Tyagi, a Software Developer with over 2+ years of
-                  experience designing and building scalable web and mobile
-                  applications. With a strong foundation in web development, I
-                  specialize in full-stack engineering using modern frontend
-                  technologies along with backend development in Node.js and
-                  Java (Spring Boot).
-                </p>
-                <p>
-                  I have experience building robust REST APIs, optimizing
-                  application performance, and developing secure, scalable
-                  systems that support real-world business requirements.
-                  Passionate about clean code,and user-centric development, 
-                  I aim to create digital solutions that are both
-                  technically sound and impactful.
+                I’m Ashmit Tyagi, a Software Developer with 2+ years of experience building scalable web and mobile applications. I specialize in full-stack development using modern frontend technologies, Node.js, and Java (Spring Boot). I focus on creating intuitive user experiences backed by robust, secure, and high-performance backend systems. Passionate about clean code and scalable architecture, I strive to deliver impactful digital solutions.
                 </p>
               </div>
               <div className="hero-counter-area d-flex justify-content-between wow fadeInUp delay-0-4s">
