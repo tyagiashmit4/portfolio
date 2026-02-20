@@ -24,14 +24,14 @@ interface DataType {
 const portfolio_data:DataType[] = [
   {
     id: 1,
-    col: "6",
+    col: "5",
     image: amarujala, 
     title: "Amarujala News App",
     category: "app",
   },
   {
     id: 2,
-    col: "6",
+    col: "5",
     image: myjyotish,
     title: "Myjyotish Astrologer App",
     category: "app",
