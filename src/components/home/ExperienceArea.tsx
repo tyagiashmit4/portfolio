@@ -40,15 +40,15 @@ const TimelineItem = ({ item, index }: { item: typeof experiences[0], index: num
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: index * 0.1 }}
-        className={`relative flex flex-col md:flex-row items-center justify-between mb-24 w-full ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+        className={`relative flex flex-col md:flex-row items-center justify-between mb-12 w-full ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
     >
         <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/4 h-[1px] bg-primary/30" />
         
         <div className={`w-full md:w-[45%] ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-            <div className="glass p-8 rounded-3xl border border-white/10 hover:border-primary/50 transition-colors duration-500">
+            <div className="glass p-6 rounded-3xl border border-white/10 hover:border-primary/50 transition-colors duration-500">
                 <span className="text-primary font-mono text-sm tracking-widest mb-2 block">{item.year}</span>
                 <h3 className="text-2xl font-display font-bold text-white mb-2">{item.company}</h3>
-                <h4 className="text-lg text-accent font-sans mb-4">{item.role}</h4>
+                <h4 className="text-lg text-accent font-sans mb-3">{item.role}</h4>
                 <p className="text-white/60 text-sm leading-relaxed">{item.description}</p>
             </div>
         </div>
@@ -70,7 +70,7 @@ const ExperienceArea = () => {
     const y1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
 
     return (
-        <section ref={ref} id="experience" className="py-32 bg-background relative overflow-hidden">
+        <section ref={ref} id="experience" className="py-24 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-0">
                 <div className="text-center mb-24">
                     <motion.span 

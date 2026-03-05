@@ -143,14 +143,6 @@ export default function TestimonialArea() {
                             PEOPLE <span className="neon-text">VOICES</span>
                         </motion.h2>
                     </div>
-
-                    <motion.div 
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="text-white/40 font-mono text-sm uppercase tracking-widest hidden lg:block"
-                    >
-                        0{testimonials.length} Testimonials
-                    </motion.div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto" style={{ perspective: "1200px" }}>
