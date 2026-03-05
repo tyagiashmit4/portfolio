@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
+import { Quote } from "lucide-react";
 
 const testimonials = [
     {
@@ -28,41 +29,140 @@ const testimonials = [
     }
 ];
 
-export default function TestimonoalArea() {
+const TestimonialCard = ({ testi, index }: { testi: typeof testimonials[0], index: number }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    const xSpring = useSpring(x, { stiffness: 200, damping: 20 });
+    const ySpring = useSpring(y, { stiffness: 200, damping: 20 });
+
+    const rotateX = useTransform(ySpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+    const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set((e.clientX - rect.left) / rect.width - 0.5);
+        y.set((e.clientY - rect.top) / rect.height - 0.5);
+        mouseX.set(e.clientX - rect.left);
+        mouseY.set(e.clientY - rect.top);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    // Generate initials for the avatar
+    const initials = testi.name.split(" ").map(n => n[0]).join("").slice(0, 2);
+
     return (
-        <section id="testimonials" className="py-32 bg-background relative overflow-hidden">
-            <div className="container mx-auto px-4 md:px-0">
-                <div className="text-center mb-24">
-                    <motion.h2 
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-display font-bold text-white uppercase"
-                    >
-                        PEOPLE <span className="neon-text">VOICES</span>
-                    </motion.h2>
+        <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.12 }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+            className="group relative rounded-2xl overflow-hidden cursor-default h-full"
+        >
+            <div className="glass p-8 rounded-2xl border border-white/5 flex flex-col h-full relative bg-[#0c1018]/80 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-primary/30">
+
+                {/* Mouse-tracking spotlight */}
+                <motion.div
+                    className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"
+                    style={{
+                        background: useMotionTemplate`
+                            radial-gradient(
+                                350px circle at ${mouseX}px ${mouseY}px,
+                                rgba(0, 229, 255, 0.08),
+                                transparent 80%
+                            )
+                        `,
+                    }}
+                />
+
+                {/* Quote Icon — floats at Z=30 */}
+                <div style={{ transform: "translateZ(30px)" }} className="mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-500">
+                        <Quote className="w-5 h-5 text-primary" />
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {testimonials.map((testi, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="glass p-8 rounded-[2rem] border border-white/5 flex flex-col justify-between"
+                {/* Content — floats at Z=40 */}
+                <div style={{ transform: "translateZ(40px)" }} className="flex-grow mb-8 relative">
+                    <p className="text-white/60 text-sm leading-relaxed font-sans line-clamp-6 group-hover:line-clamp-none group-hover:text-white/70 transition-colors duration-300">
+                        "{testi.content}"
+                    </p>
+                </div>
+
+                {/* Author info — floats at Z=50 */}
+                <div style={{ transform: "translateZ(50px)" }} className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 group-hover:border-primary/20 transition-colors duration-300">
+                    {/* Avatar Circle */}
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center border border-white/10 group-hover:border-primary/40 group-hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] transition-all duration-500 flex-shrink-0">
+                        <span className="text-sm font-display font-bold text-white">{initials}</span>
+                    </div>
+                    <div className="min-w-0">
+                        <h4 className="text-white font-display font-bold text-sm truncate group-hover:text-primary transition-colors duration-300">{testi.name}</h4>
+                        <span className="text-white/30 text-[10px] font-mono uppercase tracking-widest truncate block">{testi.role}</span>
+                    </div>
+                </div>
+
+                {/* Corner accent lines */}
+                <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500 rounded-tl-xl" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500 rounded-br-xl" />
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            </div>
+        </motion.div>
+    );
+};
+
+export default function TestimonialArea() {
+    return (
+        <section id="testimonials" className="py-32 bg-background relative overflow-hidden">
+            <div className="container mx-auto px-4 md:px-0 relative z-10">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                    <div className="flex flex-col">
+                        <motion.span 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            className="text-accent font-mono tracking-widest uppercase mb-4 flex items-center gap-4"
                         >
-                            <span className="text-primary text-4xl mb-4">"</span>
-                            <p className="text-white/70 italic mb-8 leading-relaxed font-sans text-sm line-clamp-6 hover:line-clamp-none transition-all">{testi.content}</p>
-                            <div>
-                                <h4 className="text-white font-bold text-lg">{testi.name}</h4>
-                                <span className="text-accent/60 text-xs font-mono uppercase tracking-widest">{testi.role}</span>
-                            </div>
-                        </motion.div>
+                            / Recommendations
+                            <span className="w-24 h-[1px] bg-accent/30 hidden md:block" />
+                        </motion.span>
+                        <motion.h2 
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="text-4xl md:text-6xl font-display font-bold text-white uppercase"
+                        >
+                            PEOPLE <span className="neon-text">VOICES</span>
+                        </motion.h2>
+                    </div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        className="text-white/40 font-mono text-sm uppercase tracking-widest hidden lg:block"
+                    >
+                        0{testimonials.length} Testimonials
+                    </motion.div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto" style={{ perspective: "1200px" }}>
+                    {testimonials.map((testi, i) => (
+                        <TestimonialCard key={i} testi={testi} index={i} />
                     ))}
                 </div>
             </div>
             
-            <div className="absolute top-1/2 left-0 w-96 h-96 bg-accent/5 rounded-full blur-[150px] -z-10" />
+            {/* Background glows */}
+            <div className="absolute top-1/2 left-0 w-[500px] h-[400px] bg-accent/5 rounded-[100%] blur-[150px] pointer-events-none -z-10" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-primary/5 rounded-[100%] blur-[120px] pointer-events-none -z-10" />
         </section>
     );
 }
