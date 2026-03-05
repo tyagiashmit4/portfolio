@@ -1,18 +1,49 @@
- 
+@import "tailwindcss";
 
-@import "swiper/css/bundle";    
-@import 'react-18-image-lightbox/src/style.css';
-@import 'react-modal-video/css/modal-video.css';
+@theme {
+  --color-primary: #00E5FF;
+  --color-accent: #7B61FF;
+  --color-secondary: #1A1A2E;
+  --color-background: #0b0b13;
 
-@import "../../public/assets/css/animate.min.css";
-@import "../../public/assets/css/blog.css";
-@import "../../public/assets/css/font-awesome-pro.css";
-@import "../../public/assets/css/mobilemenu.css";
-@import "../../public/assets/fonts/remixicon.css"; 
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
 
-/* @import "node_modules/bootstrap/dist/css/bootstrap"; */
+/* Custom Utilities */
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-@import "../../public/assets/css/spacing.css";
-@import "../../public/assets/css/bootstrap.min.css";
-@import "../../public/assets/css/style.css";
-@import "../../public/assets/css/responsive.css"; 
+@utility neon-border {
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+@utility neon-text {
+  color: #00E5FF;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white font-sans overflow-x-hidden m-0;
+  }
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}

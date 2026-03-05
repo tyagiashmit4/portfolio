@@ -1,116 +1,99 @@
+import { motion } from "framer-motion";
+
+const services = [
+    {
+        id: "01",
+        title: "End-to-End Web & Mobile App Development",
+        description: "Build high-performance cross-platform apps and websites using React Native/React.js with seamless navigation, theming, and state management.",
+        tech: ["React Native", "React.js"]
+    },
+    {
+        id: "02",
+        title: "Reusable Component Library / Design System",
+        description: "Create modular, theme-aware UI components to ensure design consistency across projects using React or React Native.",
+        tech: ["React", "UI/UX"]
+    },
+    {
+        id: "03",
+        title: "Custom Hook Development",
+        description: "Develop reusable custom hooks to abstract business logic and simplify component code.",
+        tech: ["Hooks", "Logic"]
+    },
+    {
+        id: "04",
+        title: "Complex State Management",
+        description: "Implement scalable, maintainable app-wide state with Redux Toolkit, or Context API.",
+        tech: ["Redux", "Context API"]
+    },
+    {
+        id: "05",
+        title: "Performance Optimization",
+        description: "Optimize render cycles and app speed using memoization, lazy loading, and profiling tools.",
+        tech: ["Optimization", "React"]
+    },
+    {
+        id: "06",
+        title: "Web App Development",
+        description: "Build responsive and interactive SPAs using React.js, React Router, and modern CSS frameworks like Tailwind.",
+        tech: ["React.js", "Tailwind"]
+    },
+    {
+        id: "07",
+        title: "CI/CD & Deployments",
+        description: "Automate builds and deployments using modern CI/CD tools for fast and safe releases.",
+        tech: ["CI/CD", "Deployment"]
+    },
+    {
+        id: "08",
+        title: "Theming & Localization",
+        description: "Enable dark/light mode, RTL layout, and multilingual interfaces using i18next and dynamic theming.",
+        tech: ["i18n", "Theming"]
+    }
+];
+
 export default function ServiceArea() {
-  return (
-    <>
-      <section id="services" className="services-area">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12 col-lg-12">
-              <div className="section-title section-black-title wow fadeInUp delay-0-2s">
-                <h2>Services</h2>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-8 col-md-7">
-              <div className="service-item wow fadeInUp delay-0-2s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>01</h5>
-                <h4>End-to-End Web & Mobile App Development (React Native/React.js)</h4>
-                <p>
-                  {" "}
-                  Build high-performance cross-platform apps and websites using React Native/React.js
-                  with seamless navigation, theming, and state management.
-                </p>
-              </div>
-            </div>
+    return (
+        <section id="services" className="py-32 bg-background relative overflow-hidden">
+            <div className="container mx-auto px-4 md:px-0">
+                <div className="flex flex-col mb-16">
+                    <motion.span 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="text-accent font-mono tracking-widest uppercase mb-4"
+                    >
+                        / Capabilities
+                    </motion.span>
+                    <motion.h2 
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        className="text-4xl md:text-6xl font-display font-bold text-white uppercase"
+                    >
+                        PREMIUM <span className="neon-text">SOLUTIONS</span>
+                    </motion.h2>
+                </div>
 
-            <div className="col-lg-4 col-md-5">
-              <div className="service-item wow fadeInUp delay-0-4s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>02</h5>
-                <h4>Reusable Component Library / Design System</h4>
-                <p>
-                  {" "}
-                  Create modular, theme-aware UI components to ensure design
-                  consistency across projects using React or React Native
-                </p>
-              </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {services.map((service, i) => (
+                        <motion.div
+                            key={service.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            whileHover={{ y: -5 }}
+                            className="glass p-8 rounded-3xl border border-white/10 group hover:border-primary/50 transition-all duration-500"
+                        >
+                            <span className="text-primary/30 font-display text-4xl mb-6 block group-hover:text-primary transition-colors">{service.id}</span>
+                            <h3 className="text-xl font-display font-bold text-white mb-4 h-14">{service.title}</h3>
+                            <p className="text-white/60 mb-8 leading-relaxed text-sm">{service.description}</p>
+                            <div className="flex flex-wrap gap-2 mt-auto">
+                                {service.tech.map(t => (
+                                    <span key={t} className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-mono text-accent uppercase tracking-wider">{t}</span>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-
-            <div className="col-lg-4 col-md-5">
-              <div className="service-item wow fadeInUp delay-0-6s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>03</h5>
-                <h4>Custom Hook Development</h4>
-                <p>
-                  Develop reusable custom hooks to abstract business logic and
-                  simplify component code.
-                </p>
-              </div>
-            </div>
-
-            <div className="col-lg-8 col-md-7">
-              <div className="service-item wow fadeInUp delay-0-8s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>04</h5>
-                <h4> Complex State Management with Redux Toolkit </h4>
-                <p>
-                  Implement scalable, maintainable app-wide state with Redux
-                  Toolkit, or Context API.
-                </p>
-              </div>
-            </div>
-
-            <div className="col-lg-8 col-md-7">
-              <div className="service-item wow fadeInUp delay-0-8s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>05</h5>
-                <h4> Performance Optimization (React/RN)</h4>
-                <p>
-                  Optimize render cycles and app speed using memoization, lazy
-                  loading, and Flipper/Hermes tools.
-                </p>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-md-5">
-              <div className="service-item wow fadeInUp delay-0-6s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>06</h5>
-                <h4>Web App Development with React.js</h4>
-                <p>
-                  Build responsive and interactive SPAs using React.js, React
-                  Router, and Tailwind or Material UI.
-                </p>
-              </div>
-            </div>
-
-            {/* <div className="col-lg-4 col-md-5">
-              <div className="service-item wow fadeInUp delay-0-6s"> */}
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                {/* <h5>07</h5>
-                <h4>CI/CD & OTA Deployments</h4>
-                <p>
-                  Automate builds and deployments using GitHub Actions, Vercel,
-                  or CodePush for fast and safe releases.
-                </p>
-              </div>
-            </div> */}
-
-            <div className="col-lg-8 col-md-7">
-              <div className="service-item wow fadeInUp delay-0-8s">
-                {/* <i className="ri-arrow-right-up-line"></i> */}
-                <h5>08</h5>
-                <h4>Theming & Localization Support</h4>
-                <p>
-                  Enable dark/light mode, RTL layout, and multilingual
-                  interfaces using i18next and dynamic theming.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+        </section>
+    );
 }

@@ -1,49 +1,66 @@
- 
-import  { useState } from 'react'
-import menu_data from './menu_data' 
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import menu_data from './menu_data';
+import { ChevronRight } from 'lucide-react';
 
+export default function MobileMenu({ setOpen }: { setOpen: (open: boolean) => void }) {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
-export default function MobileMenu() {
+  const toggleMenu = (title: string) => {
+    setActiveMenu(activeMenu === title ? null : title);
+  };
 
-  const [navTitle, setNavTitle] = useState("");
-  //openMobileMenu
-  const openMobileMenu = (menu: string) => {
-    if (navTitle === menu) {
-      setNavTitle("");
-    } else {
-      setNavTitle(menu);
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    if (link.startsWith("#")) {
+      e.preventDefault();
+      setOpen(false);
+      const element = document.querySelector(link);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (link === "/") {
+      setOpen(false);
     }
   };
 
-
   return (
-    <>
+    <nav className="flex flex-col gap-6">
+      {menu_data.map((item, i) => (
+        <div key={i} className="flex flex-col">
+          <div className="flex items-center justify-between">
+            <a 
+              href={item.link} 
+              onClick={(e) => handleClick(e, item.link)}
+              className="text-2xl font-display font-bold text-white hover:text-primary transition-colors no-underline uppercase tracking-tighter cursor-pointer"
+            >
+              {item.title}
+            </a>
+            
+            {item.has_dropdown && (
+              <button 
+                onClick={() => toggleMenu(item.title)}
+                className={`p-2 text-white/50 transition-transform duration-300 ${activeMenu === item.title ? "rotate-90" : ""}`}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            )}
+          </div>
 
-      <div className="mean-bar"> 
-        <nav className="mean-nav">
-          <ul>
-            {menu_data.map((item, i) => (
-              <li key={i} className={`${item.has_dropdown && "has-dropdown"} ${navTitle === item.title ? "dropdown-opened" : ""}`}>
-                <Link to={item.link} className="linkstyle">{item.title}</Link>
-                {item.has_dropdown &&
-                  <>
-                    <ul className="sub-menu" style={{ display: navTitle === item.title ? "block" : "none" }}>
-                      {item.sub_menus?.map((sub_menu, index) => (
-                        <li key={index}><Link to={sub_menu.link}>{sub_menu.title}</Link></li>
-                      ))}
-                    </ul>
-                    <a className={`mean-expand ${navTitle === item.title ? "mean-clicked" : ""}`}
-                      onClick={() => openMobileMenu(item.title)}
-                      style={{ fontSize: "18px", cursor: "pointer" }}><i className="fal fa-plus"></i></a>
-                  </>
-                }
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-    </>
-  )
+          {item.has_dropdown && activeMenu === item.title && (
+            <div className="flex flex-col gap-4 mt-6 ml-4 border-l border-white/10 pl-6">
+              {item.sub_menus?.map((sub, idx) => (
+                <a 
+                  key={idx} 
+                  href={sub.link} 
+                  onClick={(e) => handleClick(e, sub.link)}
+                  className="text-lg text-white/50 hover:text-primary no-underline transition-colors uppercase font-mono tracking-widest text-sm cursor-pointer"
+                >
+                  {sub.title}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </nav>
+  );
 }
