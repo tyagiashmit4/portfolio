@@ -1,9 +1,11 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Float, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import { useTheme } from "../../context/ThemeContext";
 
 export const Hero3D = () => {
     const meshRef = useRef<any>(null);
+    const { colors } = useTheme();
 
     useFrame((state) => {
         if (meshRef.current) {
@@ -16,7 +18,7 @@ export const Hero3D = () => {
         <Float speed={4} rotationIntensity={1} floatIntensity={2}>
             <Sphere args={[1, 100, 200]} scale={0.6}>
                 <MeshDistortMaterial
-                    color="#7B61FF"
+                    color={colors.accent}
                     attach="material"
                     distort={0.4}
                     speed={2}

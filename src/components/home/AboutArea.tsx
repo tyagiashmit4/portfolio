@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Card = ({ title, content, delay }: { title: string, content: string, delay: number }) => (
     <motion.div
@@ -17,8 +18,18 @@ const Card = ({ title, content, delay }: { title: string, content: string, delay
 );
 
 const AboutArea = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+    
+    // Parallax values
+    const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+
     return (
-        <section id="about" className="py-32 relative overflow-hidden px-4 md:px-0 bg-background">
+        <section ref={ref} id="about" className="py-32 relative overflow-hidden px-4 md:px-0 bg-background">
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                     <div className="md:w-1/2">
@@ -62,8 +73,8 @@ const AboutArea = () => {
             </div>
             
             {/* Background elements */}
-            <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-10" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-[100px] -z-10" />
+            <motion.div style={{ y: y1 }} className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-10" />
+            <motion.div style={{ y: y2 }} className="absolute bottom-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-[100px] -z-10" />
         </section>
     );
 };

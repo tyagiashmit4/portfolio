@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const experiences = [
     {
@@ -59,8 +60,17 @@ const TimelineItem = ({ item, index }: { item: typeof experiences[0], index: num
 );
 
 const ExperienceArea = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+    
+    // Parallax values
+    const y1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
     return (
-        <section id="experience" className="py-32 bg-background relative overflow-hidden">
+        <section ref={ref} id="experience" className="py-32 bg-background relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-0">
                 <div className="text-center mb-24">
                     <motion.span 
@@ -90,7 +100,7 @@ const ExperienceArea = () => {
                 </div>
             </div>
 
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px] -z-10" />
+            <motion.div style={{ y: y1 }} className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px] -z-10" />
         </section>
     );
 };

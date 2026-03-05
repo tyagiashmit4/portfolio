@@ -1,13 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #00E5FF;
-  --color-accent: #7B61FF;
-  --color-secondary: #1A1A2E;
-  --color-background: #0b0b13;
+  --color-primary: var(--theme-primary, #00E5FF);
+  --color-accent: var(--theme-accent, #7B61FF);
+  --color-secondary: var(--theme-secondary, #1A1A2E);
+  --color-background: var(--theme-background, #0b0b13);
 
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "Fira Code", monospace;
+}
+
+@layer base {
+  :root {
+    --theme-primary: #00E5FF;
+    --theme-accent: #7B61FF;
+    --theme-background: #0b0b13;
+    --theme-secondary: #1A1A2E;
+  }
+
+  :root.theme-cyberpunk {
+    --theme-primary: #FF00E6;
+    /* Neon Pink */
+    --theme-accent: #FEE715;
+    /* Cyberpunk Yellow */
+    --theme-background: #0f0c1b;
+    --theme-secondary: #1b1433;
+  }
 }
 
 /* Custom Utilities */

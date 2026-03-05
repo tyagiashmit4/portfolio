@@ -35,9 +35,10 @@ export const LoadingScreen = () => {
                         <motion.div 
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="w-24 h-24 border-2 border-primary/20 rounded-full flex items-center justify-center mb-8"
+                            className="w-32 h-32 border-2 border-primary/20 rounded-full flex items-center justify-center mb-8 relative"
                         >
-                            <div className="w-16 h-16 border-t-2 border-primary rounded-full animate-spin" />
+                            <img src="/assets/images/portfolio.png" alt="Logo" className="w-20 invert opacity-80" />
+                            <div className="absolute inset-x-0 inset-y-0 border-t-2 border-primary rounded-full animate-spin" />
                         </motion.div>
                         
                         <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full" />

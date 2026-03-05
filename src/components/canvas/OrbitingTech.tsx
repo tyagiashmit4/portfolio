@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Text, Float, Sphere, MeshDistortMaterial } from '@react-three/drei'
 import * as THREE from 'three'
+import { useTheme } from '../../context/ThemeContext'
 
 // Full list of user's skills
 const technologies = [
@@ -13,6 +14,7 @@ const technologies = [
 
 function TechIcon({ name, index, total }: { name: string, index: number, total: number }) {
   const ref = useRef<THREE.Group>(null)
+  const { colors } = useTheme()
   
   const phi = Math.acos(-1 + (2 * index) / total)
   const theta = Math.sqrt(total * Math.PI) * phi
@@ -38,7 +40,7 @@ function TechIcon({ name, index, total }: { name: string, index: number, total: 
       <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.3}>
         <Text
           fontSize={0.18}
-          color="#00E5FF"
+          color={colors.primary}
           anchorX="center"
           anchorY="middle"
         >
@@ -50,11 +52,12 @@ function TechIcon({ name, index, total }: { name: string, index: number, total: 
 }
 
 export function OrbitingTech() {
+  const { colors } = useTheme()
   return (
     <group>
       <Sphere args={[1.2, 64, 64]}>
         <MeshDistortMaterial
-          color="#1A1A2E"
+          color={colors.secondary}
           transparent
           opacity={0.4}
           distort={0.4}
@@ -63,7 +66,7 @@ export function OrbitingTech() {
           roughness={0}
         />
       </Sphere>
-      <pointLight position={[0, 0, 0]} intensity={3} color="#00E5FF" />
+      <pointLight position={[0, 0, 0]} intensity={3} color={colors.primary} />
       {technologies.map((tech, i) => (
         <TechIcon key={tech} name={tech} index={i} total={technologies.length} />
       ))}

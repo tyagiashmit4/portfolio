@@ -159,7 +159,7 @@ const ContactArea = () => {
                             <InputField 
                                 name="subject" 
                                 label="Subject" 
-                                placeholder="Project Discussion" 
+                                placeholder="Your Subject" 
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
                                 required
@@ -175,7 +175,7 @@ const ContactArea = () => {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     required
-                                    placeholder="Tell me about your project..."
+                                    placeholder="Your Message"
                                     className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-300"
                                 />
                             </div>

@@ -3,10 +3,13 @@ import UseSticky from "../../hooks/UseSticky";
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import Sidebar from "../../components/common/Sidebar";
+import { Palette } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function HeaderOne() {
   const { sticky } = UseSticky();
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -34,6 +37,14 @@ export default function HeaderOne() {
             </div>
 
             <div className="flex items-center gap-6">
+              <button 
+                onClick={toggleTheme}
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-primary hover:border-primary/50 transition-all duration-300"
+                title={`Switch to ${theme === 'neon' ? 'Cyberpunk' : 'Neon'} Theme`}
+              >
+                <Palette className="w-5 h-5" />
+              </button>
+              
               <button 
                 onClick={() => setOpen(true)}
                 className="lg:hidden text-white hover:text-primary transition-colors p-2"

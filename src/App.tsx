@@ -3,6 +3,7 @@ import Home from "./components/home";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { Cursor } from "./components/Cursor";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const router = createBrowserRouter([
   { 
@@ -14,13 +15,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <LoadingScreen />
       <SmoothScroll>
         <Cursor />
         <RouterProvider router={router} />
       </SmoothScroll>
-    </>
+    </ThemeProvider>
   )
 }
 
