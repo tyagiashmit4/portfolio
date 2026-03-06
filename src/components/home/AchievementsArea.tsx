@@ -15,6 +15,7 @@ function useAnimatedCounter(
     const [count, setCount] = useState(0);
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: "-100px" });
+    const isDecimal = value % 1 !== 0;
 
     useEffect(() => {
         if (!inView) return;
@@ -30,7 +31,10 @@ function useAnimatedCounter(
             const easeOutExpo = (x: number) => x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
             
             const currentProgress = Math.min(progress / (duration * 1000), 1);
-            const currentCount = Math.floor(easeOutExpo(currentProgress) * value);
+            const rawCount = easeOutExpo(currentProgress) * value;
+            const currentCount = isDecimal
+                ? Math.round(rawCount * 10) / 10
+                : Math.floor(rawCount);
             
             setCount(currentCount);
 
