@@ -4,7 +4,7 @@ import { Rocket, Briefcase, Award } from "lucide-react";
 
 const achievements = [
     { number: 20, suffix: "+", label: "Projects Completed", Icon: Rocket },
-    { number: 2.5, suffix: "+", label: "Years Experience", Icon: Briefcase },
+    { number: 3, suffix: "+", label: "Years Experience", Icon: Briefcase },
     { number: 8, suffix: "+", label: "Certifications", Icon: Award }
 ];
 
