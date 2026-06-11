@@ -17,8 +17,10 @@ const portfolio_data: DataType[] = [
   { id: 1, col: "6", image: "/assets/images/projects/amarujala.jpeg", title: "Amarujala News App", category: "App Development", link: "https://play.google.com/store/apps/details?id=com.org.AmarUjala.news&pcampaignid=web_share" },
   { id: 2, col: "6", image: "/assets/images/projects/myjyotish.jpeg", title: "Myjyotish Astrologer App", category: "App Development", link: "https://play.google.com/store/apps/details?id=com.amarujala.myjyotish&pcampaignid=web_share" },
   { id: 3, col: "4", image: "/assets/images/projects/thebonus.jpeg", title: "TheBonus app", category: "App Development", link: "https://play.google.com/store/apps/details?id=com.org.amarujala.thebonus&pcampaignid=web_share" },
-  { id: 8, col: "6", image: "/assets/images/brainquest.png", title: "BrainQuest", category: "Web Application", link: "https://aiquiz.ashmittyagi.space/" },
-  { id: 9, col: "6", image: "/assets/images/localfix.png", title: "LocalFix", category: "Web Application", link: "https://localfix.ashmittyagi.space/" },
+  { id: 4, col: "6", image: "/assets/images/brainquest.png", title: "BrainQuest", category: "Web Application", link: "https://aiquiz.ashmittyagi.space/" },
+  { id: 5, col: "6", image: "/assets/images/localfix.png", title: "LocalFix", category: "Web Application", link: "https://localfix.ashmittyagi.space/" },
+  { id: 6, col: "6", image: "/assets/images/projects/localfixapp.jpeg", title: "LocalFix-App", category: "App Development", link: "https://github.com/tyagiashmit4/localfix-app" },
+  { id: 7, col: "6", image: "/assets/images/cerebro.png", title: "Cerebro", category: "App Development", link: "https://github.com/tyagiashmit4/ai-local-app" },
 ];
 
 const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, onClick: () => void }) => {
