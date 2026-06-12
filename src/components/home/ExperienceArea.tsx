@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 const experiences = [
@@ -49,7 +49,7 @@ const TimelineItem = ({
   <motion.div
     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
     whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
+    viewport={{ once: true, margin: "-100px" }}
     transition={{ duration: 0.8, delay: index * 0.1 }}
     className={`relative flex flex-col md:flex-row items-center justify-between mb-12 w-full ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
   >
@@ -72,21 +72,37 @@ const TimelineItem = ({
       </div>
     </div>
 
-    <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(0,229,255,0.8)] z-20 hidden md:block">
+    {/* Animated dot popping up on scroll */}
+    <motion.div 
+      initial={{ scale: 0, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ type: "spring", stiffness: 250, damping: 15, delay: index * 0.1 }}
+      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(0,229,255,0.8)] z-20 hidden md:block"
+    >
       <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-40" />
-    </div>
+    </motion.div>
   </motion.div>
 );
 
 const ExperienceArea = () => {
   const ref = useRef(null);
+  
+  // Track scroll relative to section
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["start center", "end center"],
   });
 
-  // Parallax values
-  const y1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  // Smooth out the drawing animation
+  const scrollLineHeight = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Parallax background element
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [150, -150]);
 
   return (
     <section
@@ -113,7 +129,16 @@ const ExperienceArea = () => {
         </div>
 
         <div className="relative max-w-5xl mx-auto">
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-accent to-transparent opacity-20 hidden md:block" />
+          {/* Background thin guide line */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-white/10 hidden md:block" />
+          
+          {/* Active drawing line wrapper */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] hidden md:block z-10 overflow-hidden">
+            <motion.div 
+              style={{ scaleY: scrollLineHeight, transformOrigin: "top" }}
+              className="w-full h-full bg-gradient-to-b from-primary to-accent"
+            />
+          </div>
 
           <div className="relative z-10">
             {experiences.map((exp, i) => (
@@ -124,7 +149,7 @@ const ExperienceArea = () => {
       </div>
 
       <motion.div
-        style={{ y: y1 }}
+        style={{ y: backgroundY }}
         className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px] -z-10"
       />
     </section>

@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } fr
 import ImagePopup from "../../modals/ImagePopup";
 import "react-18-image-lightbox/style.css";
 import { ExternalLink } from "lucide-react";
+import Magnetic from "../common/Magnetic";
 
 interface DataType {
   id: number;
@@ -36,6 +37,18 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
   const rotateX = useTransform(ySpring, [-0.5, 0.5], ["12deg", "-12deg"]);
   const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
 
+  // Holographic Sheen calculations mapped to card tilt angle and position
+  const angle = useTransform(xSpring, [-0.5, 0.5], [100, 260]);
+  const sheenBackground = useMotionTemplate`
+    linear-gradient(
+      ${angle}deg,
+      rgba(0, 229, 255, 0.15) 0%,
+      rgba(123, 97, 255, 0.12) 35%,
+      rgba(255, 0, 230, 0.15) 70%,
+      transparent 100%
+    )
+  `;
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     x.set((e.clientX - rect.left) / rect.width - 0.5);
@@ -57,6 +70,7 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      data-cursor="view"
       style={{
         rotateX, rotateY,
         transformStyle: "preserve-3d",
@@ -82,6 +96,12 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
             )
           `,
         }}
+      />
+
+      {/* Holographic Sheen Reflection */}
+      <motion.div 
+        className="absolute inset-0 z-25 pointer-events-none opacity-0 group-hover:opacity-100 mix-blend-color-dodge transition-opacity duration-500"
+        style={{ background: sheenBackground }}
       />
 
       {/* Image Container — sits at Z=0 */}
@@ -113,16 +133,23 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
 
       {/* External Link button — floats at Z=40 */}
       {item.link && (
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary/30 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,229,255,0.2)]"
+        <div 
+          className="absolute top-4 right-4 z-40 opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-300"
           style={{ transform: "translateZ(40px)" }}
         >
-          <ExternalLink className="w-4 h-4 text-white" />
-        </a>
+          <Magnetic>
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              data-cursor="link"
+              className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-primary/30 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300"
+            >
+              <ExternalLink className="w-4 h-4 text-white" />
+            </a>
+          </Magnetic>
+        </div>
       )}
 
       {/* Info Section — pops forward at Z=50 */}
