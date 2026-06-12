@@ -7,7 +7,7 @@ import { useTheme } from '../../context/ThemeContext'
 // Full list of user's skills
 const technologies = [
   "React Native", "React.js", "JavaScript", "TypeScript", 
-  "Node.js", "Java", "Spring Boot", "MySql, Next,js", 
+  "Node.js", "Java", "Spring Boot", "MySql", "Next.js", 
   "HTML", "CSS", "DSA", "OOPs", "Git", "Github",
   "MongoDB", "Redux",
 ]
