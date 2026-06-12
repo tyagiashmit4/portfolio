@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Send, Github, Linkedin, Mail, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
+import Magnetic from "../common/Magnetic";
 
 interface InputFieldProps {
     label: string;
@@ -26,6 +27,7 @@ const InputField = ({ label, type = "text", placeholder, name, value, onChange, 
                 onChange={onChange}
                 required={required}
                 placeholder={placeholder}
+                data-cursor="link"
                 className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-300"
             />
             <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-focus-within:opacity-100 blur-xl -z-10 transition-opacity" />
@@ -104,28 +106,30 @@ const ContactArea = () => {
                         
                         <div className="space-y-8 mt-12">
                             {[
-                                { icon: <Mail className="w-6 h-6" />, label: "Email", value: "tyagiashmit4@gmail.com", link: "mailto:tyagiashmit4@gmail.com" },
-                                { icon: <Github className="w-6 h-6" />, label: "GitHub", value: "tyagiashmit4", link: "https://github.com/tyagiashmit4" },
-                                { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", value: "Ashmit Tyagi", link: "https://linkedin.com/in/tyagiashmit4/" }
+                                { icon: <Mail className="w-6 h-6" />, label: "Email", value: "tyagiashmit4@gmail.com", link: "mailto:tyagiashmit4@gmail.com", cursor: "copy" },
+                                { icon: <Github className="w-6 h-6" />, label: "GitHub", value: "tyagiashmit4", link: "https://github.com/tyagiashmit4", cursor: "link" },
+                                { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", value: "Ashmit Tyagi", link: "https://linkedin.com/in/tyagiashmit4/", cursor: "link" }
                             ].map((social, i) => (
-                                <motion.a
-                                    key={i}
-                                    href={social.link}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="flex items-center gap-6 group cursor-pointer no-underline"
-                                >
-                                    <div className="w-14 h-14 rounded-2xl glass border border-white/5 flex items-center justify-center text-white/50 group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
-                                        {social.icon}
-                                    </div>
-                                    <div>
-                                        <p className="text-white/30 font-mono text-[10px] uppercase tracking-widest mb-1">{social.label}</p>
-                                        <p className="text-lg text-white group-hover:text-primary transition-colors">{social.value}</p>
-                                    </div>
-                                </motion.a>
+                                <Magnetic key={i} className="block w-full">
+                                    <motion.a
+                                        href={social.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        data-cursor={social.cursor}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="flex items-center gap-6 group cursor-pointer no-underline"
+                                    >
+                                        <div className="w-14 h-14 rounded-2xl glass border border-white/5 flex items-center justify-center text-white/50 group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
+                                            {social.icon}
+                                        </div>
+                                        <div>
+                                            <p className="text-white/30 font-mono text-[10px] uppercase tracking-widest mb-1">{social.label}</p>
+                                            <p className="text-lg text-white group-hover:text-primary transition-colors">{social.value}</p>
+                                        </div>
+                                    </motion.a>
+                                </Magnetic>
                             ))}
                         </div>
                     </div>
@@ -176,25 +180,29 @@ const ContactArea = () => {
                                     onChange={(e) => setMessage(e.target.value)}
                                     required
                                     placeholder="Your Message"
+                                    data-cursor="link"
                                     className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-300"
                                 />
                             </div>
                             
-                            <button 
-                                type="submit"
-                                disabled={status === "loading"}
-                                className="w-full py-5 bg-primary text-background font-bold rounded-xl flex items-center justify-center gap-3 group overflow-hidden relative shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-primary/60 transition-all duration-500 disabled:opacity-70 disabled:cursor-not-allowed"
-                            >
-                                <span className="relative z-10 uppercase tracking-widest text-background">
-                                    {status === "loading" ? "Transmitting..." : "Transmit Message"}
-                                </span>
-                                {status === "loading" ? (
-                                    <Loader2 className="w-5 h-5 relative z-10 animate-spin text-background" />
-                                ) : (
-                                    <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                )}
-                                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                            </button>
+                            <Magnetic className="w-full" style={{ display: "block" }}>
+                                <button 
+                                    type="submit"
+                                    disabled={status === "loading"}
+                                    data-cursor="link"
+                                    className="w-full py-5 bg-primary text-background font-bold rounded-xl flex items-center justify-center gap-3 group overflow-hidden relative shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-primary/60 transition-all duration-500 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+                                >
+                                    <span className="relative z-10 uppercase tracking-widest text-background">
+                                        {status === "loading" ? "Transmitting..." : "Transmit Message"}
+                                    </span>
+                                    {status === "loading" ? (
+                                        <Loader2 className="w-5 h-5 relative z-10 animate-spin text-background" />
+                                    ) : (
+                                        <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    )}
+                                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                                </button>
+                            </Magnetic>
 
                             {/* Status Messages */}
                             {status === "success" && (

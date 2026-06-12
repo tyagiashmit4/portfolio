@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Scene } from "../canvas/Scene";
 import { Hero3D } from "../canvas/Hero3D";
+import { useTextScramble } from "../../hooks/useTextScramble";
+import Magnetic from "../common/Magnetic";
 
 const HeroArea = () => {
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -10,6 +12,12 @@ const HeroArea = () => {
             element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
+
+    const { text: subheadingText, scramble: scrambleSubheading } = useTextScramble(
+        "FULL-STACK DEVELOPER",
+        30,
+        400
+    );
 
     return (
         <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
@@ -34,38 +42,52 @@ const HeroArea = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-white/60 font-mono tracking-widest max-w-2xl px-4"
                     >
-                    <span className="text-accent underline-offset-8 underline decoration-accent/50">FULL-STACK DEVELOPER</span>
+                        <span 
+                            onMouseEnter={scrambleSubheading}
+                            className="text-accent underline-offset-8 underline decoration-accent/50 cursor-default select-none inline-block"
+                        >
+                            {subheadingText}
+                        </span>
                     </motion.p>
                     
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 1 }}
-                        className="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 pointer-events-auto"
+                        className="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 pointer-events-auto items-center justify-center"
                     >
-                        <a 
-                            href="#projects" 
-                            onClick={(e) => handleScroll(e, "projects")}
-                            className="px-8 py-4 bg-primary text-background font-bold tracking-widest hover:bg-white transition-all duration-300 neon-border uppercase cursor-pointer no-underline block"
-                        >
-                            VIEW WORK
-                        </a>
-                        <a 
-                            href="#contact" 
-                            onClick={(e) => handleScroll(e, "contact")}
-                            className="px-8 py-4 border border-white/20 text-white font-bold tracking-widest hover:bg-white/10 transition-all duration-300 uppercase cursor-pointer no-underline block"
-                        >
-                            CONTACT ME
-                        </a>
-                        <a 
-                            href="/Ashmit_Tyagi_Resume.pdf" 
-                            download 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="px-8 py-4 border border-primary/50 text-primary font-bold tracking-widest hover:bg-primary/10 transition-all duration-300 uppercase cursor-pointer no-underline block shadow-[0_0_15px_rgba(0,229,255,0.2)]"
-                        >
-                            DOWNLOAD RESUME
-                        </a>
+                        <Magnetic>
+                            <a 
+                                href="#projects" 
+                                data-cursor="link"
+                                onClick={(e) => handleScroll(e, "projects")}
+                                className="px-8 py-4 bg-primary text-background font-bold tracking-widest hover:bg-white transition-all duration-300 neon-border uppercase cursor-pointer no-underline block"
+                            >
+                                VIEW WORK
+                            </a>
+                        </Magnetic>
+                        <Magnetic>
+                            <a 
+                                href="#contact" 
+                                data-cursor="link"
+                                onClick={(e) => handleScroll(e, "contact")}
+                                className="px-8 py-4 border border-white/20 text-white font-bold tracking-widest hover:bg-white/10 transition-all duration-300 uppercase cursor-pointer no-underline block"
+                            >
+                                CONTACT ME
+                            </a>
+                        </Magnetic>
+                        <Magnetic>
+                            <a 
+                                href="/Ashmit_Tyagi_Resume.pdf" 
+                                data-cursor="link"
+                                download 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="px-8 py-4 border border-primary/50 text-primary font-bold tracking-widest hover:bg-primary/10 transition-all duration-300 uppercase cursor-pointer no-underline block shadow-[0_0_15px_rgba(0,229,255,0.2)]"
+                            >
+                                DOWNLOAD RESUME
+                            </a>
+                        </Magnetic>
                     </motion.div>
                 </div>
             </div>
