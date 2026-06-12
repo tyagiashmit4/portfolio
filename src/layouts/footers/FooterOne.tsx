@@ -3,15 +3,15 @@ import Magnetic from "../../components/common/Magnetic";
 
 export default function FooterOne() {
   return (
-    <footer className="py-20 border-t border-white/10 bg-background relative overflow-hidden">
+    <footer className="py-20 border-t border-black/5 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start">
-            <h2 className="text-2xl font-display font-bold text-white mb-2">ASHMIT <span className="text-primary">TYAGI</span></h2>
-            <p className="text-white/40 font-mono text-xs uppercase tracking-widest">Constructing the digital future.</p>
+            <h2 className="text-2xl font-display font-bold text-slate-800 mb-2">ASHMIT <span className="text-primary">TYAGI</span></h2>
+            <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">Constructing the digital future.</p>
           </div>
 
-          <div className="flex items-center gap-8 text-white/40">
+          <div className="flex items-center gap-8 text-slate-500">
             {[
               { icon: <Github className="w-5 h-5" />, link: "https://github.com/tyagiashmit4" },
               { icon: <Linkedin className="w-5 h-5" />, link: "https://linkedin.com/in/tyagiashmit4/" },
@@ -31,7 +31,7 @@ export default function FooterOne() {
             ))}
           </div>
 
-          <div className="text-white/20 font-mono text-[10px] uppercase tracking-tighter">
+          <div className="text-slate-400 font-mono text-[10px] uppercase tracking-tighter">
             © {new Date().getFullYear()} ALL SYSTEMS OPERATIONAL
           </div>
         </div>

@@ -12,7 +12,7 @@ const SkillBadge = ({ tech, index }: { tech: string; index: number }) => {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay: index * 0.05 }}
       onMouseEnter={scramble}
-      className="px-5 py-2 glass border border-white/10 rounded-full text-center text-xs font-mono text-white/80 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default select-none animate-pulse-slow"
+      className="px-5 py-2 glass border border-black/5 rounded-full text-center text-xs font-mono text-slate-700 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default select-none animate-pulse-slow"
     >
       {text}
     </motion.div>
@@ -21,7 +21,7 @@ const SkillBadge = ({ tech, index }: { tech: string; index: number }) => {
 
 const TechStackArea = () => {
     const skills = [
-        'React Native', 'React.js', 'Node.js', 'TypeScript', 
+        'React Native', 'React.js', 'Node.js', 'TypeScript', 'Next.js', 
         'Java', 'Spring Boot', 'MySql', 
         'JavaScript','HTML' , 'CSS','DSA', 'OOPs', 'Git'
     ];
@@ -43,13 +43,13 @@ const TechStackArea = () => {
                     >
                         / Skills
                     </motion.span>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase">
+                    <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-slate-900 uppercase">
                         THE <DecryptedHeader text="ARSENAL" tag="span" className="neon-text" />
                     </h2>
                     <motion.p 
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="text-white/60 text-lg mb-8"
+                        className="text-slate-600 text-lg mb-8"
                     >
                         A comprehensive toolkit for modern full-stack development. I leverage these technologies to build robust, scalable, and high-performance applications.
                     </motion.p>

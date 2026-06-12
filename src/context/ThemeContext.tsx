@@ -1,9 +1,7 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-
-type Theme = "neon" | "cyberpunk";
+import { createContext, useContext, ReactNode } from "react";
 
 interface ThemeContextType {
-    theme: Theme;
+    theme: string;
     toggleTheme: () => void;
     crtEnabled: boolean;
     toggleCrt: () => void;
@@ -18,36 +16,18 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setTheme] = useState<Theme>("neon");
-    const [crtEnabled, setCrtEnabled] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (theme === "cyberpunk") {
-            document.documentElement.classList.add("theme-cyberpunk");
-        } else {
-            document.documentElement.classList.remove("theme-cyberpunk");
-        }
-    }, [theme]);
-
-    useEffect(() => {
-        if (crtEnabled) {
-            document.documentElement.classList.add("theme-crt");
-        } else {
-            document.documentElement.classList.remove("theme-crt");
-        }
-    }, [crtEnabled]);
-
-    const toggleTheme = () => {
-        setTheme(prev => prev === "neon" ? "cyberpunk" : "neon");
+    // High-fidelity Minimalist Dark Mode Theme Colors
+    const colors = {
+        primary: "#0B563D",   // Forest Green
+        accent: "#059669",    // Mint/Emerald Green
+        secondary: "#F9F6EE", // Almond/Cream Card
+        background: "#F3EFE0" // Warm Cream
     };
 
-    const toggleCrt = () => {
-        setCrtEnabled(prev => !prev);
-    };
-
-    const colors = theme === "neon" 
-        ? { primary: "#00E5FF", accent: "#7B61FF", secondary: "#1A1A2E", background: "#0b0b13" }
-        : { primary: "#FF00E6", accent: "#FEE715", secondary: "#1b1433", background: "#0f0c1b" };
+    const theme = "dark";
+    const toggleTheme = () => {};
+    const crtEnabled = false;
+    const toggleCrt = () => {};
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, crtEnabled, toggleCrt, colors }}>

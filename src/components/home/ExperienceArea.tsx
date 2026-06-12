@@ -59,15 +59,15 @@ const TimelineItem = ({
     <div
       className={`w-full md:w-[45%] ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}
     >
-      <div className="glass p-6 rounded-3xl border border-white/10 hover:border-primary/50 transition-colors duration-500">
+      <div className="glass p-6 rounded-3xl border border-black/5 hover:border-primary/50 transition-colors duration-500">
         <span className="text-primary font-mono text-sm tracking-widest mb-2 block">
           {item.year}
         </span>
-        <h3 className="text-2xl font-display font-bold text-white mb-2">
+        <h3 className="text-2xl font-display font-bold text-slate-800 mb-2">
           {item.company}
         </h3>
         <h4 className="text-lg text-accent font-sans mb-3">{item.role}</h4>
-        <p className="text-white/60 text-sm leading-relaxed">
+        <p className="text-slate-600 text-sm leading-relaxed">
           {item.description}
         </p>
       </div>
@@ -79,7 +79,7 @@ const TimelineItem = ({
       whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ type: "spring", stiffness: 250, damping: 15, delay: index * 0.1 }}
-      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(0,229,255,0.8)] z-20 hidden md:block"
+      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(52, 211, 153, 0.6)] z-20 hidden md:block"
     >
       <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-40" />
     </motion.div>
@@ -127,7 +127,7 @@ const ExperienceArea = () => {
 
         <div className="relative max-w-5xl mx-auto">
           {/* Background thin guide line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-white/10 hidden md:block" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-black/5 hidden md:block" />
           
           {/* Active drawing line wrapper */}
           <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] hidden md:block z-10 overflow-hidden">

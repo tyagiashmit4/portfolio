@@ -1,6 +1,5 @@
-import { useRef, useEffect } from "react";
-import { useInView } from "framer-motion";
-import { useTextScramble } from "../../hooks/useTextScramble";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 interface DecryptedHeaderProps {
   text: string;
@@ -10,29 +9,58 @@ interface DecryptedHeaderProps {
 
 export default function DecryptedHeader({ text, className, tag = "h2" }: DecryptedHeaderProps) {
   const ref = useRef<HTMLHeadingElement>(null);
-  // Animates when it comes into view
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  const { text: scrambledText, scramble } = useTextScramble(text, 25, 100, false);
-  const hasTriggered = useRef(false);
-
-  useEffect(() => {
-    if (inView && !hasTriggered.current) {
-      hasTriggered.current = true;
-      scramble();
-    }
-  }, [inView, scramble]);
-
   const Tag = tag as any;
+
+  const words = text.split(" ");
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: {
+      y: "110%",
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1] as any, // easeOutExpo
+      },
+    },
+  };
 
   return (
     <Tag
       ref={ref}
-      onMouseEnter={scramble}
-      className={className}
-      style={{ userSelect: "none" }}
+      className={`${className} inline-flex flex-wrap overflow-hidden`}
     >
-      {scrambledText}
+      <motion.span
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        className="inline-flex flex-wrap gap-x-[0.2em] overflow-hidden"
+      >
+        {words.map((word, i) => (
+          <span key={i} className="inline-block overflow-hidden">
+            <motion.span
+              variants={childVariants}
+              className="inline-block origin-bottom"
+            >
+              {word}
+            </motion.span>
+          </span>
+        ))}
+      </motion.span>
     </Tag>
   );
 }

@@ -46,7 +46,7 @@ export default function NavTrack() {
   return (
     <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center select-none">
       {/* Background track line */}
-      <div className="absolute top-2 bottom-2 w-[2px] bg-white/10 rounded-full z-0">
+      <div className="absolute top-2 bottom-2 w-[2px] bg-black/5 rounded-full z-0">
         <motion.div 
           style={{ scaleY, transformOrigin: "top" }}
           className="w-full h-full bg-gradient-to-b from-primary to-accent rounded-full"
@@ -64,8 +64,8 @@ export default function NavTrack() {
               className="relative flex items-center justify-center group py-1"
               data-cursor="link"
             >
-              {/* Scrambled tooltip on hover */}
-              <span className="absolute right-8 opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity bg-[#0c1018]/95 border border-white/10 px-3 py-1.5 rounded-lg text-[9px] font-mono text-primary uppercase tracking-widest whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+              {/* Tooltip on hover */}
+              <span className="absolute right-8 opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity bg-white/95 border border-black/5 px-3 py-1.5 rounded-lg text-[9px] font-mono text-primary uppercase tracking-widest whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
                 {item.title}
               </span>
 
@@ -73,9 +73,9 @@ export default function NavTrack() {
               <motion.div
                 animate={{
                   scale: isActive ? 1.3 : 1,
-                  backgroundColor: isActive ? "var(--theme-primary, #00E5FF)" : "rgba(255,255,255,0.15)",
-                  borderColor: isActive ? "var(--theme-primary, #00E5FF)" : "transparent",
-                  boxShadow: isActive ? "0 0 10px var(--theme-primary, #00E5FF)" : "none"
+                  backgroundColor: isActive ? "var(--theme-primary, #059669)" : "rgba(0,0,0,0.15)",
+                  borderColor: isActive ? "var(--theme-primary, #059669)" : "transparent",
+                  boxShadow: isActive ? "0 0 10px var(--theme-primary, #059669)" : "none"
                 }}
                 className="w-2.5 h-2.5 rounded-full border transition-all duration-300"
               />

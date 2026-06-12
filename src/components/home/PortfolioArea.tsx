@@ -38,14 +38,13 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
   const rotateX = useTransform(ySpring, [-0.5, 0.5], ["12deg", "-12deg"]);
   const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
 
-  // Holographic Sheen calculations mapped to card tilt angle and position
+  // Clean sheen calculations mapped to card tilt angle and position
   const angle = useTransform(xSpring, [-0.5, 0.5], [100, 260]);
   const sheenBackground = useMotionTemplate`
     linear-gradient(
       ${angle}deg,
-      rgba(0, 229, 255, 0.15) 0%,
-      rgba(123, 97, 255, 0.12) 35%,
-      rgba(255, 0, 230, 0.15) 70%,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(52, 211, 153, 0.03) 50%,
       transparent 100%
     )
   `;
@@ -71,12 +70,12 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      data-cursor="view"
+      data-cursor="link"
       style={{
         rotateX, rotateY,
         transformStyle: "preserve-3d",
       }}
-      className="group relative rounded-xl overflow-hidden border border-white/5 bg-[#0c1018] cursor-pointer"
+      className="group relative rounded-xl overflow-hidden border border-black/5 bg-secondary cursor-pointer"
       onClick={onClick}
     >
       {/* Dynamic backglow on hover */}
@@ -92,7 +91,7 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
           background: useMotionTemplate`
             radial-gradient(
               400px circle at ${mouseX}px ${mouseY}px,
-              rgba(0, 229, 255, 0.1),
+              rgba(52, 211, 153, 0.08),
               transparent 80%
             )
           `,
@@ -113,21 +112,14 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
           className="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-110 transition-all duration-700 ease-out"
         />
         {/* Gradient fade to card base */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1018] via-[#0c1018]/30 to-transparent group-hover:via-primary/5 transition-colors duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/30 to-transparent group-hover:via-primary/5 transition-colors duration-500" />
 
-        {/* Horizontal scan line */}
-        <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="absolute left-0 right-0 h-[1px] bg-primary/40 animate-scan" />
-        </div>
 
-        {/* Targeting brackets */}
-        <div className="absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0" />
-        <div className="absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0" />
       </div>
 
       {/* Category badge — floats above the image at Z=30 */}
       <div className="absolute top-4 left-4 z-20" style={{ transform: "translateZ(30px)" }}>
-        <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-mono text-primary uppercase tracking-widest group-hover:border-primary/30 group-hover:shadow-[0_0_12px_rgba(0,229,255,0.15)] transition-all duration-300">
+        <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-mono text-[#A7F3D0] uppercase tracking-widest group-hover:border-primary/30 group-hover:shadow-[0_0_12px_rgba(52, 211, 153, 0.15)] transition-all duration-300">
           {item.category}
         </span>
       </div>
@@ -145,7 +137,7 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               data-cursor="link"
-              className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-primary/30 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-primary/30 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(52, 211, 153, 0.2)] transition-all duration-300"
             >
               <ExternalLink className="w-4 h-4 text-white" />
             </a>
@@ -155,15 +147,9 @@ const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, 
 
       {/* Info Section — pops forward at Z=50 */}
       <div className="p-6 relative z-10" style={{ transform: "translateZ(50px)" }}>
-        <h3 className="text-lg font-display font-bold text-white group-hover:text-primary transition-colors duration-300 truncate">
+        <h3 className="text-lg font-display font-bold text-slate-800 group-hover:text-primary transition-colors duration-300 truncate">
           {item.title}
         </h3>
-        <div className="flex items-center gap-2 mt-2">
-          <div className="w-6 h-[1px] bg-primary/50 group-hover:w-12 transition-all duration-500" />
-          <span className="text-white/30 font-mono text-[10px] uppercase tracking-widest group-hover:text-white/50 transition-colors">
-            View Details
-          </span>
-        </div>
       </div>
 
       {/* Bottom accent line */}

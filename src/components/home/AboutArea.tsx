@@ -74,13 +74,13 @@ const Stat3DCard = ({ item, index }: { item: typeof achievements[0], index: numb
         >
             <div className="glass p-8 rounded-2xl border border-white/10 flex flex-col items-center text-center overflow-hidden transition-all duration-500 group-hover:border-primary/40 relative bg-background/50 backdrop-blur-xl">
 
-                {/* Mouse-tracking spotlight glare */}
+                 {/* Mouse-tracking spotlight glare */}
                 <motion.div
                     className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"
                     style={{
                         background: useTransform(
                             [mouseX, mouseY],
-                            ([mx, my]: number[]) => `radial-gradient(300px circle at ${mx}px ${my}px, rgba(0, 229, 255, 0.12), transparent 50%)`
+                            ([mx, my]: number[]) => `radial-gradient(300px circle at ${mx}px ${my}px, rgba(52, 211, 153, 0.08), transparent 50%)`
                         )
                     }}
                 />
@@ -88,19 +88,19 @@ const Stat3DCard = ({ item, index }: { item: typeof achievements[0], index: numb
                 {/* Icon */}
                 <div
                     style={{ transform: "translateZ(40px)" }}
-                    className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] transition-all duration-500"
+                    className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(52, 211, 153, 0.2)] transition-all duration-500"
                 >
                     <IconComponent className="w-6 h-6 text-primary" />
                 </div>
 
                 {/* Number */}
                 <div style={{ transform: "translateZ(60px)" }} className="flex items-baseline gap-1 mb-2">
-                    <span className="text-5xl font-display font-bold text-white group-hover:text-primary transition-colors duration-300">{count}</span>
+                    <span className="text-5xl font-display font-bold text-slate-800 group-hover:text-primary transition-colors duration-300">{count}</span>
                     <span className="text-3xl font-display font-bold text-primary">{item.suffix}</span>
                 </div>
 
                 {/* Label */}
-                <p style={{ transform: "translateZ(30px)" }} className="text-white/40 font-mono uppercase tracking-[0.2em] text-[10px]">{item.label}</p>
+                <p style={{ transform: "translateZ(30px)" }} className="text-slate-500 font-mono uppercase tracking-[0.2em] text-[10px]">{item.label}</p>
 
                 {/* Corner accent lines */}
                 <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500 rounded-tl-xl" />
@@ -121,7 +121,7 @@ const Card = ({ title, content, delay }: { title: string, content: string, delay
     >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <h3 className="text-2xl font-display font-bold mb-4 text-primary">{title}</h3>
-        <p className="text-white/70 font-sans leading-relaxed">{content}</p>
+        <p className="text-slate-600 font-sans leading-relaxed">{content}</p>
     </motion.div>
 );
 
@@ -147,16 +147,16 @@ const AboutArea = () => {
                         >
                             / About Me
                         </motion.span>
-                        <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase leading-tight">
+                        <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-slate-900 uppercase leading-tight">
                             <DecryptedHeader text="CREATIVITY MEETS" tag="span" /> <br />
                             <DecryptedHeader text="CODE ARCHITECTURE" tag="span" className="neon-text" />
                         </h2>
                         <motion.p 
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="text-white/60 text-lg mb-12 max-w-xl leading-relaxed"
+                            className="text-slate-600 text-lg mb-12 max-w-xl leading-relaxed"
                         >
-                            I specialize in building complex digital systems that are as beautiful as they are functional. With a focus on performance and user experience, I bring ideas to life using the latest web technologies.
+                            I specialize in building complex digital systems that are as beautiful as they are functional. With a focus on performance and user experience, I bring ideas to life using the latest technologies.
                         </motion.p>
                     </div>
                     

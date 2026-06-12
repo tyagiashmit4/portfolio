@@ -1,13 +1,13 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Text, Float, Sphere, MeshDistortMaterial } from '@react-three/drei'
+import { Text, Float } from '@react-three/drei'
 import * as THREE from 'three'
 import { useTheme } from '../../context/ThemeContext'
 
 // Full list of user's skills
 const technologies = [
   "React Native", "React.js", "JavaScript", "TypeScript", 
-  "Node.js", "Java", "Spring Boot", "MySql", 
+  "Node.js", "Java", "Spring Boot", "MySql, Next,js", 
   "HTML", "CSS", "DSA", "OOPs", "Git", "Github",
   "MongoDB", "Redux",
 ]
@@ -55,17 +55,8 @@ export function OrbitingTech() {
   const { colors } = useTheme()
   return (
     <group>
-      <Sphere args={[1.2, 64, 64]}>
-        <MeshDistortMaterial
-          color={colors.secondary}
-          transparent
-          opacity={0.4}
-          distort={0.4}
-          speed={1.5}
-          metalness={1}
-          roughness={0}
-        />
-      </Sphere>
+
+
       <pointLight position={[0, 0, 0]} intensity={3} color={colors.primary} />
       {technologies.map((tech, i) => (
         <TechIcon key={tech} name={tech} index={i} total={technologies.length} />

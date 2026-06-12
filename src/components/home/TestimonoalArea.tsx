@@ -68,9 +68,9 @@ const TestimonialCard = ({ testi, index }: { testi: typeof testimonials[0], inde
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="group relative rounded-2xl overflow-hidden cursor-default h-full"
-            data-cursor="view"
+            data-cursor="link"
         >
-            <div className="glass p-8 rounded-2xl border border-white/5 flex flex-col h-full relative bg-[#0c1018]/80 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-primary/30">
+            <div className="glass p-8 rounded-2xl border border-black/5 flex flex-col h-full relative bg-secondary/80 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-primary/30">
 
                 {/* Mouse-tracking spotlight */}
                 <motion.div
@@ -79,7 +79,7 @@ const TestimonialCard = ({ testi, index }: { testi: typeof testimonials[0], inde
                         background: useMotionTemplate`
                             radial-gradient(
                                 350px circle at ${mouseX}px ${mouseY}px,
-                                rgba(0, 229, 255, 0.08),
+                                rgba(52, 211, 153, 0.08),
                                 transparent 80%
                             )
                         `,
@@ -88,33 +88,31 @@ const TestimonialCard = ({ testi, index }: { testi: typeof testimonials[0], inde
 
                 {/* Quote Icon — floats at Z=30 */}
                 <div style={{ transform: "translateZ(30px)" }} className="mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-500">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(52, 211, 153, 0.15)] transition-all duration-500">
                         <Quote className="w-5 h-5 text-primary" />
                     </div>
                 </div>
 
                 {/* Content — floats at Z=40 */}
                 <div style={{ transform: "translateZ(40px)" }} className="flex-grow mb-8 relative">
-                    <p className="text-white/60 text-sm leading-relaxed font-sans line-clamp-6 group-hover:line-clamp-none group-hover:text-white/70 transition-colors duration-300">
+                    <p className="text-slate-600 text-sm leading-relaxed font-sans line-clamp-6 group-hover:line-clamp-none group-hover:text-slate-750 transition-colors duration-300">
                         "{testi.content}"
                     </p>
                 </div>
 
                 {/* Author info — floats at Z=50 */}
-                <div style={{ transform: "translateZ(50px)" }} className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 group-hover:border-primary/20 transition-colors duration-300">
+                <div style={{ transform: "translateZ(50px)" }} className="flex items-center gap-4 mt-auto pt-6 border-t border-black/5 group-hover:border-primary/20 transition-colors duration-300">
                     {/* Avatar Circle */}
-                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center border border-white/10 group-hover:border-primary/40 group-hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] transition-all duration-500 flex-shrink-0">
-                        <span className="text-sm font-display font-bold text-white">{initials}</span>
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center border border-black/5 group-hover:border-primary/40 group-hover:shadow-[0_0_15px_rgba(52, 211, 153, 0.15)] transition-all duration-500 flex-shrink-0">
+                        <span className="text-sm font-display font-bold text-slate-800">{initials}</span>
                     </div>
                     <div className="min-w-0">
-                        <h4 className="text-white font-display font-bold text-sm truncate group-hover:text-primary transition-colors duration-300">{testi.name}</h4>
-                        <span className="text-white/30 text-[10px] font-mono uppercase tracking-widest truncate block">{testi.role}</span>
+                        <h4 className="text-slate-800 font-display font-bold text-sm truncate group-hover:text-primary transition-colors duration-300">{testi.name}</h4>
+                        <span className="text-slate-400 text-[10px] font-mono uppercase tracking-widest truncate block">{testi.role}</span>
                     </div>
                 </div>
 
-                {/* Corner accent lines */}
-                <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500 rounded-tl-xl" />
-                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500 rounded-br-xl" />
+
 
                 {/* Bottom accent line */}
                 <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
@@ -137,7 +135,7 @@ export default function TestimonialArea() {
                             / Recommendations
                             <span className="w-24 h-[1px] bg-accent/30 hidden md:block" />
                         </motion.span>
-                        <h2 className="text-4xl md:text-6xl font-display font-bold text-white uppercase">
+                        <h2 className="text-4xl md:text-6xl font-display font-bold text-slate-900 uppercase">
                             PEOPLE <DecryptedHeader text="VOICES" tag="span" className="neon-text" />
                         </h2>
                     </div>

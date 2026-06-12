@@ -70,10 +70,10 @@ const CyberpunkCard = ({ service, index }: { service: typeof services[0], index:
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
             onMouseMove={handleMouseMove}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-background border border-white/5 p-8 transition-all duration-500 hover:border-transparent min-h-[300px]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-secondary border border-black/5 p-8 transition-all duration-500 hover:border-transparent min-h-[300px]"
         >
             {/* Base Background */}
-            <div className="absolute inset-0 bg-white/[0.02]" />
+            <div className="absolute inset-0 bg-black/[0.01]" />
 
             {/* Mouse Tracking Glow Border */}
             <motion.div
@@ -103,11 +103,11 @@ const CyberpunkCard = ({ service, index }: { service: typeof services[0], index:
                     </div>
                 </div>
 
-                <h3 className="text-xl font-display font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-display font-bold text-slate-800 mb-4 group-hover:text-primary transition-colors duration-300">
                     {service.title}
                 </h3>
                 
-                <p className="text-white/60 mb-8 leading-relaxed text-sm font-sans flex-grow">
+                <p className="text-slate-600 mb-8 leading-relaxed text-sm font-sans flex-grow">
                     {service.description}
                 </p>
                 
@@ -115,7 +115,7 @@ const CyberpunkCard = ({ service, index }: { service: typeof services[0], index:
                     {service.tech.map(t => (
                         <span 
                             key={t} 
-                            className="px-3 py-1 bg-white/5 border border-white/10 rounded-sm text-[10px] font-mono text-white/50 group-hover:border-primary/30 group-hover:text-accent transition-all uppercase tracking-wider"
+                            className="px-3 py-1 bg-black/[0.02] border border-black/5 rounded-sm text-[10px] font-mono text-slate-500 group-hover:border-primary/30 group-hover:text-accent transition-all uppercase tracking-wider"
                         >
                             {t}
                         </span>
@@ -145,7 +145,7 @@ export default function ServiceArea() {
                     >
                         / Capabilities
                     </motion.span>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-white uppercase pl-6">
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-slate-900 uppercase pl-6">
                         PREMIUM <DecryptedHeader text="SOLUTIONS" tag="span" className="neon-text" />
                     </h2>
                 </div>
