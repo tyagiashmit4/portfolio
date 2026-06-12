@@ -2,6 +2,22 @@ import { motion } from "framer-motion";
 import { Scene } from "../canvas/Scene";
 import { OrbitingTech } from "../canvas/OrbitingTech";
 import DecryptedHeader from "../common/DecryptedHeader";
+import { useTextScramble } from "../../hooks/useTextScramble";
+
+const SkillBadge = ({ tech, index }: { tech: string; index: number }) => {
+  const { text, scramble } = useTextScramble(tech, 25, 0, false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.05 }}
+      onMouseEnter={scramble}
+      className="px-5 py-2 glass border border-white/10 rounded-full text-center text-xs font-mono text-white/80 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default select-none animate-pulse-slow"
+    >
+      {text}
+    </motion.div>
+  );
+};
 
 const TechStackArea = () => {
     const skills = [
@@ -40,15 +56,7 @@ const TechStackArea = () => {
                     
                     <div className="flex flex-wrap gap-3 pointer-events-auto">
                         {skills.map((tech, i) => (
-                            <motion.div
-                                key={tech}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.05 }}
-                                className="px-5 py-2 glass border border-white/10 rounded-full text-center text-xs font-mono text-white/80 hover:border-primary/50 hover:text-primary transition-all duration-300"
-                            >
-                                {tech}
-                            </motion.div>
+                            <SkillBadge key={tech} tech={tech} index={i} />
                         ))}
                     </div>
                 </div>

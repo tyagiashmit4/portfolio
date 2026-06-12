@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import Magnetic from "../../components/common/Magnetic";
 
 export default function FooterOne() {
   return (
@@ -16,14 +17,17 @@ export default function FooterOne() {
               { icon: <Linkedin className="w-5 h-5" />, link: "https://linkedin.com/in/tyagiashmit4/" },
               { icon: <Mail className="w-5 h-5" />, link: "mailto:tyagiashmit4@gmail.com" }
             ].map((social, i) => (
-              <a 
-                key={i} 
-                href={social.link} 
-                target="_blank" 
-                className="hover:text-primary transition-colors duration-300 transform hover:scale-110"
-              >
-                {social.icon}
-              </a>
+              <Magnetic key={i}>
+                <a 
+                  href={social.link} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  data-cursor="link"
+                  className="hover:text-primary transition-colors duration-300 transform hover:scale-110 flex items-center justify-center p-2"
+                >
+                  {social.icon}
+                </a>
+              </Magnetic>
             ))}
           </div>
 

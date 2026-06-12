@@ -3,14 +3,14 @@ import UseSticky from "../../hooks/UseSticky";
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import Sidebar from "../../components/common/Sidebar";
-import { Palette, Monitor } from "lucide-react";
+import { Palette } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 import Magnetic from "../../components/common/Magnetic";
 
 export default function HeaderOne() {
   const { sticky } = UseSticky();
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme, crtEnabled, toggleCrt } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -46,21 +46,6 @@ export default function HeaderOne() {
                   title={`Switch to ${theme === 'neon' ? 'Cyberpunk' : 'Neon'} Theme`}
                 >
                   <Palette className="w-5 h-5" />
-                </button>
-              </Magnetic>
-
-              <Magnetic>
-                <button 
-                  onClick={toggleCrt}
-                  data-cursor="link"
-                  className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 cursor-pointer ${
-                    crtEnabled 
-                      ? "border-primary text-primary shadow-[0_0_12px_rgba(0,229,255,0.4)] bg-primary/10" 
-                      : "border-white/10 text-white/70 hover:text-primary hover:border-primary/50"
-                  }`}
-                  title={crtEnabled ? "Disable CRT Scanlines" : "Enable CRT Scanlines"}
-                >
-                  <Monitor className="w-5 h-5" />
                 </button>
               </Magnetic>
               

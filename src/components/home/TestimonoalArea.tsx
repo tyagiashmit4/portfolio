@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import { Quote } from "lucide-react";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 const testimonials = [
     {
@@ -67,6 +68,7 @@ const TestimonialCard = ({ testi, index }: { testi: typeof testimonials[0], inde
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="group relative rounded-2xl overflow-hidden cursor-default h-full"
+            data-cursor="view"
         >
             <div className="glass p-8 rounded-2xl border border-white/5 flex flex-col h-full relative bg-[#0c1018]/80 backdrop-blur-xl overflow-hidden transition-all duration-500 group-hover:border-primary/30">
 
@@ -135,13 +137,9 @@ export default function TestimonialArea() {
                             / Recommendations
                             <span className="w-24 h-[1px] bg-accent/30 hidden md:block" />
                         </motion.span>
-                        <motion.h2 
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="text-4xl md:text-6xl font-display font-bold text-white uppercase"
-                        >
-                            PEOPLE <span className="neon-text">VOICES</span>
-                        </motion.h2>
+                        <h2 className="text-4xl md:text-6xl font-display font-bold text-white uppercase">
+                            PEOPLE <DecryptedHeader text="VOICES" tag="span" className="neon-text" />
+                        </h2>
                     </div>
                 </div>
 

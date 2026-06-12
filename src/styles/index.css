@@ -100,3 +100,24 @@ html.theme-crt span:hover {
   text-shadow: 2px -1px 0 rgba(255, 0, 230, 0.5), -2px 1px 0 rgba(0, 229, 255, 0.5);
   transition: text-shadow 0.1s ease;
 }
+
+/* Custom Cyberpunk Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-background, #0b0b13);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary, #00E5FF);
+  border-radius: 3px;
+  box-shadow: 0 0 5px var(--theme-primary, #00E5FF);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent, #7B61FF);
+  box-shadow: 0 0 5px var(--theme-accent, #7B61FF);
+}
