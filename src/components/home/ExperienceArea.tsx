@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 const experiences = [
   {
@@ -119,13 +120,9 @@ const ExperienceArea = () => {
           >
             / Journey
           </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-display font-bold"
-          >
-            PROFESSIONAL <span className="neon-text">TIMELINE</span>
-          </motion.h2>
+          <h2 className="text-4xl md:text-6xl font-display font-bold">
+            PROFESSIONAL <DecryptedHeader text="TIMELINE" tag="span" className="neon-text" />
+          </h2>
         </div>
 
         <div className="relative max-w-5xl mx-auto">

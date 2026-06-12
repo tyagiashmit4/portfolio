@@ -3,6 +3,7 @@ import { Send, Github, Linkedin, Mail, CheckCircle2, AlertCircle, Loader2 } from
 import { useState } from "react";
 import axios from "axios";
 import Magnetic from "../common/Magnetic";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 interface InputFieldProps {
     label: string;
@@ -95,14 +96,10 @@ const ContactArea = () => {
                         >
                             / Get in touch
                         </motion.span>
-                        <motion.h2 
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="text-4xl md:text-6xl font-display font-bold mb-8 text-white"
-                        >
+                        <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase">
                             LET'S BUILD <br />
-                            <span className="neon-text">THE FUTURE</span> TOGETHER
-                        </motion.h2>
+                            <DecryptedHeader text="THE FUTURE" tag="span" className="neon-text" /> TOGETHER
+                        </h2>
                         
                         <div className="space-y-8 mt-12">
                             {[

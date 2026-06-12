@@ -4,6 +4,7 @@ import ImagePopup from "../../modals/ImagePopup";
 import "react-18-image-lightbox/style.css";
 import { ExternalLink } from "lucide-react";
 import Magnetic from "../common/Magnetic";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 interface DataType {
   id: number;
@@ -195,13 +196,9 @@ export default function PortfolioArea() {
               / Case Studies
               <span className="w-24 h-[1px] bg-accent/30 hidden md:block" />
             </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="text-4xl md:text-6xl font-display font-bold"
-            >
-              LATEST <span className="neon-text">CREATIONS</span>
-            </motion.h2>
+            <h2 className="text-4xl md:text-6xl font-display font-bold">
+              LATEST <DecryptedHeader text="CREATIONS" tag="span" className="neon-text" />
+            </h2>
           </div>
         </div>
 

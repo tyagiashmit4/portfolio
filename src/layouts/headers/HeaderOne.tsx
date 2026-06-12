@@ -3,13 +3,14 @@ import UseSticky from "../../hooks/UseSticky";
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import Sidebar from "../../components/common/Sidebar";
-import { Palette } from "lucide-react";
+import { Palette, Monitor } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
+import Magnetic from "../../components/common/Magnetic";
 
 export default function HeaderOne() {
   const { sticky } = UseSticky();
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, crtEnabled, toggleCrt } = useTheme();
 
   return (
     <>
@@ -36,18 +37,36 @@ export default function HeaderOne() {
               </nav>
             </div>
 
-            <div className="flex items-center gap-6">
-              <button 
-                onClick={toggleTheme}
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-primary hover:border-primary/50 transition-all duration-300"
-                title={`Switch to ${theme === 'neon' ? 'Cyberpunk' : 'Neon'} Theme`}
-              >
-                <Palette className="w-5 h-5" />
-              </button>
+            <div className="flex items-center gap-4">
+              <Magnetic>
+                <button 
+                  onClick={toggleTheme}
+                  data-cursor="link"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-primary hover:border-primary/50 transition-all duration-300 cursor-pointer"
+                  title={`Switch to ${theme === 'neon' ? 'Cyberpunk' : 'Neon'} Theme`}
+                >
+                  <Palette className="w-5 h-5" />
+                </button>
+              </Magnetic>
+
+              <Magnetic>
+                <button 
+                  onClick={toggleCrt}
+                  data-cursor="link"
+                  className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 cursor-pointer ${
+                    crtEnabled 
+                      ? "border-primary text-primary shadow-[0_0_12px_rgba(0,229,255,0.4)] bg-primary/10" 
+                      : "border-white/10 text-white/70 hover:text-primary hover:border-primary/50"
+                  }`}
+                  title={crtEnabled ? "Disable CRT Scanlines" : "Enable CRT Scanlines"}
+                >
+                  <Monitor className="w-5 h-5" />
+                </button>
+              </Magnetic>
               
               <button 
                 onClick={() => setOpen(true)}
-                className="lg:hidden text-white hover:text-primary transition-colors p-2"
+                className="lg:hidden text-white hover:text-primary transition-colors p-2 cursor-pointer"
               >
                 <div className="w-8 h-[2px] bg-current mb-2" />
                 <div className="w-6 h-[2px] bg-current ml-auto" />

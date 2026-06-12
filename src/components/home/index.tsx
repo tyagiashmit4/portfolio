@@ -9,11 +9,13 @@ import ExperienceArea from './ExperienceArea'
 import ContactArea from './ContactArea'
 import HeaderOne from '../../layouts/headers/HeaderOne'
 import FooterOne from '../../layouts/footers/FooterOne'
+import NavTrack from '../common/NavTrack'
 
 export default function Home() { 
   return (
     <>
       <HeaderOne />
+      <NavTrack />
       <main className="bg-background">
         <HeroArea />
         <AboutArea />

@@ -1,6 +1,7 @@
 import { motion, useInView, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Rocket, Briefcase, Award } from "lucide-react";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 const achievements = [
     { number: 20, suffix: "+", label: "Projects Completed", Icon: Rocket },
@@ -146,14 +147,10 @@ const AboutArea = () => {
                         >
                             / About Me
                         </motion.span>
-                        <motion.h2 
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase leading-tight"
-                        >
-                            CREATIVITY MEETS <br />
-                            <span className="neon-text">CODE ARCHITECTURE</span>
-                        </motion.h2>
+                        <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase leading-tight">
+                            <DecryptedHeader text="CREATIVITY MEETS" tag="span" /> <br />
+                            <DecryptedHeader text="CODE ARCHITECTURE" tag="span" className="neon-text" />
+                        </h2>
                         <motion.p 
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Scene } from "../canvas/Scene";
 import { OrbitingTech } from "../canvas/OrbitingTech";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 const TechStackArea = () => {
     const skills = [
@@ -26,13 +27,9 @@ const TechStackArea = () => {
                     >
                         / Skills
                     </motion.span>
-                    <motion.h2 
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="text-4xl md:text-6xl font-display font-bold mb-8"
-                    >
-                        THE <span className="neon-text">ARSENAL</span>
-                    </motion.h2>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white uppercase">
+                        THE <DecryptedHeader text="ARSENAL" tag="span" className="neon-text" />
+                    </h2>
                     <motion.p 
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}

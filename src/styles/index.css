@@ -65,3 +65,38 @@
 .animate-scan {
   animation: scan 3s linear infinite;
 }
+
+/* CRT Theme Styles */
+html.theme-crt body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 999999;
+  pointer-events: none;
+  animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1.0; }
+  100% { opacity: 0.99; }
+}
+
+html.theme-crt a:hover,
+html.theme-crt button:hover,
+html.theme-crt h1:hover,
+html.theme-crt h2:hover,
+html.theme-crt h3:hover,
+html.theme-crt span:hover {
+  text-shadow: 2px -1px 0 rgba(255, 0, 230, 0.5), -2px 1px 0 rgba(0, 229, 255, 0.5);
+  transition: text-shadow 0.1s ease;
+}

@@ -5,6 +5,8 @@ type Theme = "neon" | "cyberpunk";
 interface ThemeContextType {
     theme: Theme;
     toggleTheme: () => void;
+    crtEnabled: boolean;
+    toggleCrt: () => void;
     colors: {
         primary: string;
         accent: string;
@@ -17,6 +19,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setTheme] = useState<Theme>("neon");
+    const [crtEnabled, setCrtEnabled] = useState<boolean>(false);
 
     useEffect(() => {
         if (theme === "cyberpunk") {
@@ -26,8 +29,20 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [theme]);
 
+    useEffect(() => {
+        if (crtEnabled) {
+            document.documentElement.classList.add("theme-crt");
+        } else {
+            document.documentElement.classList.remove("theme-crt");
+        }
+    }, [crtEnabled]);
+
     const toggleTheme = () => {
         setTheme(prev => prev === "neon" ? "cyberpunk" : "neon");
+    };
+
+    const toggleCrt = () => {
+        setCrtEnabled(prev => !prev);
     };
 
     const colors = theme === "neon" 
@@ -35,7 +50,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
         : { primary: "#FF00E6", accent: "#FEE715", secondary: "#1b1433", background: "#0f0c1b" };
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme, colors }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme, crtEnabled, toggleCrt, colors }}>
             {children}
         </ThemeContext.Provider>
     );

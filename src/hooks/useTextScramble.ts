@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 const GLYPHS = "!@#$%^&*()_+{}:<>?[]|\\,./;'-=`~0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-export function useTextScramble(targetText: string, speed = 30, delay = 0) {
+export function useTextScramble(targetText: string, speed = 30, delay = 0, triggerOnMount = true) {
   const [text, setText] = useState(targetText);
 
   const scramble = useCallback(() => {
@@ -49,9 +49,10 @@ export function useTextScramble(targetText: string, speed = 30, delay = 0) {
   }, [targetText, speed, delay]);
 
   useEffect(() => {
+    if (!triggerOnMount) return;
     const cleanUp = scramble();
     return cleanUp;
-  }, [scramble]);
+  }, [scramble, triggerOnMount]);
 
   return { text, scramble };
 }

@@ -1,5 +1,6 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
+import DecryptedHeader from "../common/DecryptedHeader";
 
 const services = [
     {
@@ -144,13 +145,9 @@ export default function ServiceArea() {
                     >
                         / Capabilities
                     </motion.span>
-                    <motion.h2 
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="text-4xl md:text-6xl font-display font-bold text-white uppercase pl-6"
-                    >
-                        PREMIUM <span className="neon-text">SOLUTIONS</span>
-                    </motion.h2>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-white uppercase pl-6">
+                        PREMIUM <DecryptedHeader text="SOLUTIONS" tag="span" className="neon-text" />
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
