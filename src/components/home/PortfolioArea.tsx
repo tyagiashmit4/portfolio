@@ -20,7 +20,7 @@ const portfolio_data: DataType[] = [
   { id: 4, col: "6", image: "/assets/images/brainquest.png", title: "BrainQuest", category: "Web Application", link: "https://aiquiz.ashmittyagi.space/" },
   { id: 5, col: "6", image: "/assets/images/localfix.png", title: "LocalFix", category: "Web Application", link: "https://localfix.ashmittyagi.space/" },
   { id: 6, col: "6", image: "/assets/images/projects/localfixapp.jpeg", title: "LocalFix-App", category: "App Development", link: "https://github.com/tyagiashmit4/localfix-app" },
-  { id: 7, col: "6", image: "/assets/images/cerebro.png", title: "Cerebro", category: "App Development", link: "https://github.com/tyagiashmit4/ai-local-app" },
+  { id: 7, col: "6", image: "/assets/images/projects/cerebro.png", title: "Cerebro", category: "App Development", link: "https://github.com/tyagiashmit4/ai-local-app" },
 ];
 
 const ProjectCard = ({ item, index, onClick }: { item: DataType, index: number, onClick: () => void }) => {
