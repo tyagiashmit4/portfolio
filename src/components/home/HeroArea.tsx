@@ -103,7 +103,7 @@ const HeroArea = () => {
                         </Magnetic>
                         <Magnetic>
                             <a 
-                                href="/Ashmit_Tyagi_Resume.pdf" 
+                                href="/Ashmit_Tyagi_Resume(1).pdf" 
                                 data-cursor="link"
                                 download 
                                 target="_blank" 
