@@ -11,18 +11,20 @@ export default function HeaderOne() {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-          sticky ? "bg-background/80 backdrop-blur-lg py-4 border-b border-black/5 shadow-sm" : "py-6 bg-transparent"
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-6xl z-[100] transition-all duration-500 rounded-2xl ${
+          sticky 
+            ? "bg-white/45 backdrop-blur-xl py-3 border border-white/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] px-6 md:px-8" 
+            : "bg-transparent py-5 border border-transparent px-4"
         }`}
       >
-        <div className="container mx-auto px-4 md:px-0">
+        <div className="w-full">
           <div className="flex items-center justify-between">
             <div className="flex-shrink-0">
               <Link to="/" className="block">
                 <img 
                   src="/assets/images/portfolio.png" 
                   alt="Logo" 
-                  className="w-24 md:w-32 h-auto hover:scale-105 transition-transform duration-300" 
+                  className="w-20 md:w-28 h-auto hover:scale-105 transition-transform duration-300" 
                 />
               </Link>
             </div>
@@ -34,12 +36,24 @@ export default function HeaderOne() {
             </div>
 
             <div className="flex items-center gap-4">
+              {/* Contact Quick Button on desktop, mobile menu drawer toggle on mobile */}
+              <a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="hidden lg:inline-flex px-4 py-2 border border-slate-200 hover:border-indigo-500 text-slate-700 hover:text-indigo-600 font-mono text-xs uppercase tracking-wider rounded-full hover:bg-indigo-50/20 transition-all duration-300 cursor-pointer"
+              >
+                Let's Talk
+              </a>
+
               <button 
                 onClick={() => setOpen(true)}
-                className="lg:hidden text-slate-800 hover:text-primary transition-colors p-2 cursor-pointer"
+                className="lg:hidden text-slate-800 hover:text-indigo-600 transition-colors p-2 cursor-pointer flex flex-col gap-1.5 items-end justify-center"
               >
-                <div className="w-8 h-[2px] bg-current mb-2" />
-                <div className="w-6 h-[2px] bg-current ml-auto" />
+                <div className="w-6 h-[2px] bg-current" />
+                <div className="w-4 h-[2px] bg-current" />
               </button>
             </div>
           </div>

@@ -1,6 +1,36 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import menu_data from "./menu_data";
 
 export default function NavMenu() {
+  const [activeSection, setActiveSection] = useState("#home");
+
+  useEffect(() => {
+    const sections = menu_data.map(item => document.querySelector(item.link));
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      // Higher rootMargin settings for precision tracking
+      { threshold: 0.2, rootMargin: "-25% 0px -45% 0px" }
+    );
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
     if (link.startsWith("#")) {
       e.preventDefault();
@@ -12,36 +42,31 @@ export default function NavMenu() {
   };
 
   return (
-    <ul className="flex items-center gap-8 list-none m-0 p-0">
-      {menu_data.map((item, i) => (
-        <li key={i} className="relative group">
-          <a 
-            href={item.link}
-            onClick={(e) => handleClick(e, item.link)}
-            className="text-slate-600 hover:text-primary font-mono text-sm tracking-widest uppercase py-2 no-underline transition-colors duration-300 block cursor-pointer"
-          >
-            {item.title}
-          </a>
-          
-          <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
-
-          {item.has_dropdown && (
-            <ul className="absolute top-full left-0 w-48 bg-background border border-black/5 p-4 rounded-xl opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 list-none shadow-xl">
-              {item.sub_menus?.map((sub_menu, index) => (
-                <li key={index} className="mb-2 last:mb-0">
-                  <a 
-                    href={sub_menu.link}
-                    onClick={(e) => handleClick(e, sub_menu.link)}
-                    className="text-slate-500 hover:text-primary text-xs uppercase tracking-wider block py-1 no-underline transition-colors"
-                  >
-                    {sub_menu.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
+    <ul className="flex items-center gap-1 list-none m-0 p-1 bg-black/[0.02] border border-black/[0.04] rounded-full backdrop-blur-sm">
+      {menu_data.map((item, i) => {
+        const isActive = activeSection === item.link;
+        return (
+          <li key={i} className="relative">
+            <a 
+              href={item.link}
+              onClick={(e) => handleClick(e, item.link)}
+              className={`relative z-10 px-4 py-2 font-mono text-[10px] md:text-xs tracking-wider uppercase no-underline transition-colors duration-300 block cursor-pointer ${
+                isActive ? "text-indigo-600 font-semibold" : "text-slate-500 hover:text-slate-900"
+              }`}
+            >
+              {item.title}
+            </a>
+            
+            {isActive && (
+              <motion.div
+                layoutId="activeHeaderPill"
+                className="absolute inset-0 bg-white/90 shadow-sm border border-black/[0.05] rounded-full z-0"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
