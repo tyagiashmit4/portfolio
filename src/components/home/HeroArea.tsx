@@ -285,9 +285,9 @@ const HeroArea = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="text-3xl sm:text-4xl lg:text-[3.15rem] xl:text-[3.55rem] font-display font-extrabold tracking-tight text-slate-900 leading-[1.15]"
+              className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.35rem] font-display font-extrabold tracking-tight text-slate-900 leading-[1.15]"
             >
-              <div className="block">
+              <div className="block whitespace-nowrap">
                 {line1.split(" ").map((word, wIdx) => (
                   <span key={wIdx} className="inline-block mr-2.5 whitespace-nowrap">
                     {word.split("").map((char, cIdx) => (
@@ -298,7 +298,7 @@ const HeroArea = () => {
                   </span>
                 ))}
               </div>
-              <div className="block mt-1">
+              <div className="block mt-1 whitespace-nowrap">
                 {line2.split(" ").map((word, wIdx) => (
                   <span key={wIdx} className="inline-block mr-2.5 whitespace-nowrap">
                     {word.split("").map((char, cIdx) => (

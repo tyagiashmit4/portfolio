@@ -18,24 +18,22 @@ export default function HeaderOne() {
         }`}
       >
         <div className="w-full">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center">
             <div className="flex-shrink-0">
-              <Link to="/" className="block">
-                <img 
-                  src="/assets/images/portfolio.png" 
-                  alt="Logo" 
-                  className="w-20 md:w-28 h-auto hover:scale-105 transition-transform duration-300" 
-                />
+              <Link to="/" className="block group">
+                <span className="font-display font-bold text-lg md:text-xl text-slate-900 tracking-tight group-hover:text-primary transition-colors duration-300">
+                  Ashmit<span className="text-primary">.</span>Tyagi
+                </span>
               </Link>
             </div>
 
-            <div className="hidden lg:block">
+            <div className="hidden lg:flex justify-center">
               <nav>
                 <NavMenu />
               </nav>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-end">
               {/* Contact Quick Button on desktop, mobile menu drawer toggle on mobile */}
               <a 
                 href="#contact" 
